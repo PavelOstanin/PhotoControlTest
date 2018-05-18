@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AGImageCollectionViewCell" id="G2v-w1-pPV" userLabel="AGStickerCollectionViewCell" customClass="AGImageCollectionViewCell" customModule="AGPhotoEditor" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="139" height="81"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="139" height="81"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JM8-X8-V2P">
+                        <rect key="frame" x="0.0" y="0.0" width="139" height="81"/>
+                    </imageView>
+                </subviews>
+            </view>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="JM8-X8-V2P" firstAttribute="top" secondItem="G2v-w1-pPV" secondAttribute="top" id="41V-Ma-UHh"/>
+                <constraint firstAttribute="bottom" secondItem="JM8-X8-V2P" secondAttribute="bottom" id="J1H-Ep-Y9d"/>
+                <constraint firstAttribute="trailing" secondItem="JM8-X8-V2P" secondAttribute="trailing" id="JFl-1w-Yhf"/>
+                <constraint firstItem="JM8-X8-V2P" firstAttribute="leading" secondItem="G2v-w1-pPV" secondAttribute="leading" id="fqO-aQ-E0I"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="LV7-BB-yEF"/>
+            <size key="customSize" width="139" height="81"/>
+            <connections>
+                <outlet property="imageView" destination="JM8-X8-V2P" id="dh7-6D-46W"/>
+            </connections>
+            <point key="canvasLocation" x="78.5" y="76.5"/>
+        </collectionViewCell>
+    </objects>
+</document>
