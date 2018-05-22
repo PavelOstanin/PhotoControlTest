@@ -11,11 +11,10 @@ import UIKit
 
 extension AGCanvasView {
     
-    func keyboardDidShow(notification: NSNotification) {
-        if isTyping {
-//            doneButton.isHidden = false
-//            colorPickerView.isHidden = false
-//            hideToolbar(hide: true)
+    @objc func keyboardDidShow(notification: NSNotification) {
+        if let keyboardFrame: NSValue = notification.userInfo?[UIKeyboardFrameEndUserInfoKey] as? NSValue {
+            let keyboardRectangle = keyboardFrame.cgRectValue
+            keyboardHeight = keyboardRectangle.height - 45
         }
     }
     

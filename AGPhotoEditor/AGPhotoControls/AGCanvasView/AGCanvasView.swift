@@ -21,12 +21,22 @@ class AGCanvasView: UIView {
     var lastTextViewFont:UIFont?
     var activeTextView: UITextView?
     
+    var isDrawing: Bool = false
+    var lastPoint: CGPoint!
+    var swiped = false
+    
+    var keyboardHeight: CGFloat = 0
+    
+    @IBOutlet weak var imageViewForDraw: UIImageView!
+    
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
         Bundle.main.loadNibNamed("AGCanvasView", owner: self, options: nil)
         self.addSubview(contentView);
         contentView.frame = self.bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow),
+                                               name: .UIKeyboardDidShow, object: nil)
     }
     
     func addImage(image: UIImage){
@@ -56,6 +66,10 @@ class AGCanvasView: UIView {
         textView.autocorrectionType = .no
         textView.isScrollEnabled = false
         textView.delegate = self
+        let view = AGToolBar.init(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 45))
+        view.toolBarDelegate = self
+        view.textView = textView
+        textView.inputAccessoryView = view
         addSubview(textView)
         addGestures(view: textView)
         textView.becomeFirstResponder()
@@ -87,6 +101,39 @@ class AGCanvasView: UIView {
         view.addGestureRecognizer(tapGesture)
         
     }
+    
+}
 
+extension AGCanvasView: AGToolBarDelegate{
+    
+    func didChangeInputView(type: KeyboardType){
+        switch type {
+        case .keyboard:
+            activeTextView?.inputView = nil
+        case .font:
+            let view = AGFontInputView.init(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: keyboardHeight))
+            view.fontInputViewDelegate = self
+            activeTextView?.inputView = view
+        case .format:
+            activeTextView?.inputView = nil
+        case .color:
+            activeTextView?.inputView = nil
+        default:
+            activeTextView?.inputView = nil
+        }
+        activeTextView?.reloadInputViews()
+    }
+    
+}
 
+extension AGCanvasView: AGFontInputViewDelegate {
+    
+    func didChangeTextFont(fontName: String) {
+        activeTextView?.font = UIFont.init(name: fontName, size: (activeTextView?.font?.pointSize)!)
+    }
+    
+    func didChangeTextColor(color: UIColor) {
+        
+    }
+    
 }

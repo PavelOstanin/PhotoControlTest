@@ -19,13 +19,17 @@
             <connections>
                 <outlet property="contentView" destination="iN0-l3-epB" id="qi6-qg-jcm"/>
                 <outlet property="deleteView" destination="HXQ-Eq-cvA" id="Fcx-tL-VoL"/>
+                <outlet property="imageViewForDraw" destination="eRS-b9-bao" id="l5G-IK-ROq"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB">
+        <view clipsSubviews="YES" contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eRS-b9-bao">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                </imageView>
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HXQ-Eq-cvA">
                     <rect key="frame" x="285" y="577" width="90" height="90"/>
                     <subviews>
@@ -51,9 +55,14 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="HXQ-Eq-cvA" secondAttribute="bottom" id="GjN-77-Raq"/>
+                <constraint firstItem="eRS-b9-bao" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Tdz-GK-eVj"/>
+                <constraint firstItem="eRS-b9-bao" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="kvy-jt-COf"/>
+                <constraint firstItem="eRS-b9-bao" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="lpc-iA-GbO"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="HXQ-Eq-cvA" secondAttribute="trailing" id="uF8-qv-ixH"/>
+                <constraint firstItem="eRS-b9-bao" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="uft-Hh-bCo"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="34.5" y="53.5"/>
         </view>
     </objects>
 </document>

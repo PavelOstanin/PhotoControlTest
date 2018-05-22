@@ -46,6 +46,13 @@
                         <action selector="textButtonTapped:" destination="-1" eventType="touchUpInside" id="dWS-6I-zb8"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W7K-DC-T9G">
+                    <rect key="frame" x="98" y="30" width="36" height="30"/>
+                    <state key="normal" title="Draw"/>
+                    <connections>
+                        <action selector="drawButtonTapped:" destination="-1" eventType="touchUpInside" id="pD5-Mk-kIK"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="0.71372549019999998" green="0.71372549019999998" blue="0.74509803919999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -53,10 +60,12 @@
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="M4F-w6-59H" secondAttribute="trailing" constant="16" id="6hr-PD-2QM"/>
                 <constraint firstItem="M4F-w6-59H" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="ALU-lr-7XS"/>
                 <constraint firstItem="M4F-w6-59H" firstAttribute="leading" secondItem="elc-5h-CN2" secondAttribute="trailing" constant="35" id="BZJ-91-BHh"/>
+                <constraint firstItem="W7K-DC-T9G" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="IDo-La-C1Z"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="kYv-hZ-J4Q" secondAttribute="bottom" constant="70" id="MCW-Hp-kUM"/>
                 <constraint firstItem="elc-5h-CN2" firstAttribute="leading" secondItem="beM-Uy-oAw" secondAttribute="trailing" constant="35" id="RHp-hZ-GcU"/>
                 <constraint firstItem="kYv-hZ-J4Q" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="VbQ-B0-z9s"/>
                 <constraint firstItem="beM-Uy-oAw" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="evs-UE-cD1"/>
+                <constraint firstItem="beM-Uy-oAw" firstAttribute="leading" secondItem="W7K-DC-T9G" secondAttribute="trailing" constant="35" id="rwW-Zz-J06"/>
                 <constraint firstItem="kYv-hZ-J4Q" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="xoJ-Rx-htK"/>
                 <constraint firstItem="elc-5h-CN2" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="zcT-Th-Lhk"/>
             </constraints>

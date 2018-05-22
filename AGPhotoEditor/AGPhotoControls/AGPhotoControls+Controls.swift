@@ -35,6 +35,14 @@ extension AGPhotoControlsViewController {
     @IBAction func textButtonTapped(_ sender: Any) {
         canvasView.addTextView()
     }
+    
+    @IBAction func drawButtonTapped(_ sender: Any) {
+        canvasView .isDrawing = true
+//        canvasView.isUserInteractionEnabled = false
+//        doneButton.isHidden = false
+//        colorPickerView.isHidden = false
+//        hideToolbar(hide: true)
+    }
 
     
 }

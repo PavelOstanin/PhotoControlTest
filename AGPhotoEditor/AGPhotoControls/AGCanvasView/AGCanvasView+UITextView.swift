@@ -23,10 +23,10 @@ extension AGCanvasView: UITextViewDelegate {
         isTyping = true
         lastTextViewTransform =  textView.transform
         lastTextViewTransCenter = textView.center
-        lastTextViewFont = textView.font!
+//        lastTextViewFont = textView.font!
         activeTextView = textView
         textView.superview?.bringSubview(toFront: textView)
-        textView.font = UIFont(name: "Helvetica", size: 30)
+//        textView.font = UIFont(name: "Helvetica", size: 30)
         UIView.animate(withDuration: 0.3
             ,
                        animations: {
@@ -43,7 +43,7 @@ extension AGCanvasView: UITextViewDelegate {
                 return
         }
         activeTextView = nil
-        textView.font = self.lastTextViewFont!
+//        textView.font = self.lastTextViewFont!
         UIView.animate(withDuration: 0.3,
                        animations: {
                         textView.transform = self.lastTextViewTransform!

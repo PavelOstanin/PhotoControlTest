@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E9031A6720B43A2A00242A85 /* AGToolBar+Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9031A6420B43A2A00242A85 /* AGToolBar+Protocol.swift */; };
+		E9031A6820B43A2A00242A85 /* AGToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9031A6520B43A2A00242A85 /* AGToolBar.swift */; };
+		E9031A6920B43A2A00242A85 /* AGToolBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9031A6620B43A2A00242A85 /* AGToolBar.xib */; };
+		E9031A7020B43C6800242A85 /* AGFontInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9031A6F20B43C6800242A85 /* AGFontInputView.swift */; };
+		E9031A7220B43C7600242A85 /* AGFontInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9031A7120B43C7600242A85 /* AGFontInputView.xib */; };
+		E9031A7620B43D1700242A85 /* AGFontCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9031A7420B43D1700242A85 /* AGFontCollectionViewCell.swift */; };
+		E9031A7720B43D1700242A85 /* AGFontCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9031A7520B43D1700242A85 /* AGFontCollectionViewCell.xib */; };
 		E9AFC8C720AD7B8B00FF76E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AFC8C620AD7B8B00FF76E2 /* AppDelegate.swift */; };
 		E9AFC8C920AD7B8B00FF76E2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AFC8C820AD7B8B00FF76E2 /* ViewController.swift */; };
 		E9AFC8CC20AD7B8B00FF76E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9AFC8CA20AD7B8B00FF76E2 /* Main.storyboard */; };
@@ -27,9 +34,17 @@
 		E9AFC90820AEFD9A00FF76E2 /* UIImageView+Alpha.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AFC90720AEFD9A00FF76E2 /* UIImageView+Alpha.swift */; };
 		E9AFC90A20AF192800FF76E2 /* AGCanvasView+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AFC90920AF192800FF76E2 /* AGCanvasView+Keyboard.swift */; };
 		E9AFC90C20AF19AE00FF76E2 /* AGCanvasView+UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AFC90B20AF19AE00FF76E2 /* AGCanvasView+UITextView.swift */; };
+		E9AFC90E20B3F13E00FF76E2 /* AGCanvasView+Drawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AFC90D20B3F13E00FF76E2 /* AGCanvasView+Drawing.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E9031A6420B43A2A00242A85 /* AGToolBar+Protocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AGToolBar+Protocol.swift"; sourceTree = "<group>"; };
+		E9031A6520B43A2A00242A85 /* AGToolBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AGToolBar.swift; sourceTree = "<group>"; };
+		E9031A6620B43A2A00242A85 /* AGToolBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AGToolBar.xib; sourceTree = "<group>"; };
+		E9031A6F20B43C6800242A85 /* AGFontInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AGFontInputView.swift; sourceTree = "<group>"; };
+		E9031A7120B43C7600242A85 /* AGFontInputView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AGFontInputView.xib; sourceTree = "<group>"; };
+		E9031A7420B43D1700242A85 /* AGFontCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AGFontCollectionViewCell.swift; sourceTree = "<group>"; };
+		E9031A7520B43D1700242A85 /* AGFontCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AGFontCollectionViewCell.xib; sourceTree = "<group>"; };
 		E9AFC8C320AD7B8B00FF76E2 /* AGPhotoEditor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AGPhotoEditor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9AFC8C620AD7B8B00FF76E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E9AFC8C820AD7B8B00FF76E2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -52,6 +67,7 @@
 		E9AFC90720AEFD9A00FF76E2 /* UIImageView+Alpha.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Alpha.swift"; sourceTree = "<group>"; };
 		E9AFC90920AF192800FF76E2 /* AGCanvasView+Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AGCanvasView+Keyboard.swift"; sourceTree = "<group>"; };
 		E9AFC90B20AF19AE00FF76E2 /* AGCanvasView+UITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AGCanvasView+UITextView.swift"; sourceTree = "<group>"; };
+		E9AFC90D20B3F13E00FF76E2 /* AGCanvasView+Drawing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AGCanvasView+Drawing.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +81,59 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E9031A6220B43A2A00242A85 /* AGInputViews */ = {
+			isa = PBXGroup;
+			children = (
+				E9031A6C20B43C5800242A85 /* AGColorInputView */,
+				E9031A6D20B43C5900242A85 /* AGFontInputView */,
+				E9031A6E20B43C5900242A85 /* AGFormatInputView */,
+			);
+			path = AGInputViews;
+			sourceTree = "<group>";
+		};
+		E9031A6320B43A2A00242A85 /* AGToolBar */ = {
+			isa = PBXGroup;
+			children = (
+				E9031A6420B43A2A00242A85 /* AGToolBar+Protocol.swift */,
+				E9031A6520B43A2A00242A85 /* AGToolBar.swift */,
+				E9031A6620B43A2A00242A85 /* AGToolBar.xib */,
+			);
+			path = AGToolBar;
+			sourceTree = "<group>";
+		};
+		E9031A6C20B43C5800242A85 /* AGColorInputView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = AGColorInputView;
+			sourceTree = "<group>";
+		};
+		E9031A6D20B43C5900242A85 /* AGFontInputView */ = {
+			isa = PBXGroup;
+			children = (
+				E9031A6F20B43C6800242A85 /* AGFontInputView.swift */,
+				E9031A7120B43C7600242A85 /* AGFontInputView.xib */,
+				E9031A7320B43D0000242A85 /* Cell */,
+			);
+			path = AGFontInputView;
+			sourceTree = "<group>";
+		};
+		E9031A6E20B43C5900242A85 /* AGFormatInputView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = AGFormatInputView;
+			sourceTree = "<group>";
+		};
+		E9031A7320B43D0000242A85 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				E9031A7420B43D1700242A85 /* AGFontCollectionViewCell.swift */,
+				E9031A7520B43D1700242A85 /* AGFontCollectionViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		E9AFC8BA20AD7B8A00FF76E2 = {
 			isa = PBXGroup;
 			children = (
@@ -98,6 +167,7 @@
 		E9AFC8D820AD7EF700FF76E2 /* AGPhotoControls */ = {
 			isa = PBXGroup;
 			children = (
+				E9AFC91120B4243700FF76E2 /* AGCustomViews */,
 				E9AFC90620AEFD9A00FF76E2 /* Extensions */,
 				E9AFC8FF20AEFC4100FF76E2 /* AGCanvasView */,
 				E9AFC8D920AD926600FF76E2 /* AGPhotoControlsViewController.swift */,
@@ -121,6 +191,7 @@
 				E9AFC90B20AF19AE00FF76E2 /* AGCanvasView+UITextView.swift */,
 				E9AFC90120AEFC4100FF76E2 /* AGCanvasView.xib */,
 				E9AFC90220AEFC4100FF76E2 /* AGCanvasView.swift */,
+				E9AFC90D20B3F13E00FF76E2 /* AGCanvasView+Drawing.swift */,
 			);
 			path = AGCanvasView;
 			sourceTree = "<group>";
@@ -131,6 +202,15 @@
 				E9AFC90720AEFD9A00FF76E2 /* UIImageView+Alpha.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E9AFC91120B4243700FF76E2 /* AGCustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				E9031A6220B43A2A00242A85 /* AGInputViews */,
+				E9031A6320B43A2A00242A85 /* AGToolBar */,
+			);
+			path = AGCustomViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,12 +273,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9AFC8F220ADB0C200FF76E2 /* AGImageCollectionViewCell.xib in Resources */,
+				E9031A6920B43A2A00242A85 /* AGToolBar.xib in Resources */,
 				E9AFC8D120AD7B8E00FF76E2 /* LaunchScreen.storyboard in Resources */,
 				E9AFC90420AEFC4100FF76E2 /* AGCanvasView.xib in Resources */,
 				E9AFC8DC20AD926600FF76E2 /* AGPhotoControlsViewController.xib in Resources */,
 				E9AFC8CE20AD7B8E00FF76E2 /* Assets.xcassets in Resources */,
 				E9AFC8F620ADB13200FF76E2 /* AGImagesViewController.xib in Resources */,
 				E9AFC8CC20AD7B8B00FF76E2 /* Main.storyboard in Resources */,
+				E9031A7220B43C7600242A85 /* AGFontInputView.xib in Resources */,
+				E9031A7720B43D1700242A85 /* AGFontCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -212,16 +295,21 @@
 				E9AFC90C20AF19AE00FF76E2 /* AGCanvasView+UITextView.swift in Sources */,
 				E9AFC8DB20AD926600FF76E2 /* AGPhotoControlsViewController.swift in Sources */,
 				E9AFC8C920AD7B8B00FF76E2 /* ViewController.swift in Sources */,
+				E9031A6720B43A2A00242A85 /* AGToolBar+Protocol.swift in Sources */,
 				E9AFC8F120ADB0C200FF76E2 /* AGImageCollectionViewCell.swift in Sources */,
+				E9031A6820B43A2A00242A85 /* AGToolBar.swift in Sources */,
 				E9AFC90320AEFC4100FF76E2 /* AGCanvasView+Gestures.swift in Sources */,
 				E9AFC90820AEFD9A00FF76E2 /* UIImageView+Alpha.swift in Sources */,
 				E9AFC8F520ADB13200FF76E2 /* AGImagesViewController.swift in Sources */,
 				E9AFC8DE20AD9EBF00FF76E2 /* AGPhotoControls+Controls.swift in Sources */,
 				E9AFC8F820ADB2A800FF76E2 /* AGProtocols.swift in Sources */,
+				E9AFC90E20B3F13E00FF76E2 /* AGCanvasView+Drawing.swift in Sources */,
 				E9AFC8C720AD7B8B00FF76E2 /* AppDelegate.swift in Sources */,
 				E9AFC90A20AF192800FF76E2 /* AGCanvasView+Keyboard.swift in Sources */,
+				E9031A7020B43C6800242A85 /* AGFontInputView.swift in Sources */,
 				E9AFC8FA20ADBA4700FF76E2 /* AGPhotoControls+ImagesViewController.swift in Sources */,
 				E9AFC90520AEFC4100FF76E2 /* AGCanvasView.swift in Sources */,
+				E9031A7620B43D1700242A85 /* AGFontCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
