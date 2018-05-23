@@ -117,7 +117,9 @@ extension AGCanvasView: AGToolBarDelegate{
         case .format:
             activeTextView?.inputView = nil
         case .color:
-            activeTextView?.inputView = nil
+            let view = AGColorInputView.init(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: keyboardHeight))
+            view.colorInputViewDelegate = self
+            activeTextView?.inputView = view
         default:
             activeTextView?.inputView = nil
         }
@@ -132,8 +134,14 @@ extension AGCanvasView: AGFontInputViewDelegate {
         activeTextView?.font = UIFont.init(name: fontName, size: (activeTextView?.font?.pointSize)!)
     }
     
+}
+
+extension AGCanvasView: AGColorInputViewDelegate {
+    
     func didChangeTextColor(color: UIColor) {
-        
+        activeTextView?.textColor = color
     }
     
 }
+
+

@@ -1,21 +1,22 @@
 //
-//  AGFontInputView.swift
+//  AGColorInputView.swift
 //  AGPhotoEditor
 //
-//  Created by Pavel on 22.05.2018.
+//  Created by Pavel on 23.05.2018.
 //  Copyright © 2018 Agilie. All rights reserved.
 //
 
 import UIKit
 
-class AGFontInputView: UIView {
+class AGColorInputView: UIView {
+
 
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var collectionView: UICollectionView!
-    var fontInputViewDelegate : AGFontInputViewDelegate?
+    var colorInputViewDelegate : AGColorInputViewDelegate?
     
-    lazy var fonts: Array<String> = {
-        return fontsDataSource
+    lazy var colors: Array<UIColor> = {
+        return colorsDataSource
     }()
     
     override init(frame: CGRect) {
@@ -31,47 +32,46 @@ class AGFontInputView: UIView {
     }
     
     private func nibSetup() {
-        Bundle.main.loadNibNamed("AGFontInputView", owner: self, options: nil)
+        Bundle.main.loadNibNamed("AGColorInputView", owner: self, options: nil)
         self.addSubview(contentView);
         contentView.frame = bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     }
     
     func commonInit(){
-        let nibName = UINib(nibName: "AGFontCollectionViewCell", bundle:nil)
-        collectionView.register(nibName, forCellWithReuseIdentifier: "AGFontCollectionViewCell")
+        let nibName = UINib(nibName: "AGColorCollectionViewCell", bundle:nil)
+        collectionView.register(nibName, forCellWithReuseIdentifier: "AGColorCollectionViewCell")
         collectionView.reloadData()
-        
     }
-
+    
 }
 
-extension AGFontInputView: UICollectionViewDataSource {
+extension AGColorInputView: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return fonts.count
+        return colors.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AGFontCollectionViewCell", for: indexPath) as! AGFontCollectionViewCell
-        cell.fontNameLabel.font = UIFont.init(name: fonts[indexPath.row], size: 17)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AGColorCollectionViewCell", for: indexPath) as! AGColorCollectionViewCell
+        cell.colorView.backgroundColor = colors[indexPath.row]
         return cell
     }
     
 }
 
-extension AGFontInputView : UICollectionViewDelegate {
+extension AGColorInputView : UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        fontInputViewDelegate?.didChangeTextFont(fontName: fonts[indexPath.row])
+        colorInputViewDelegate?.didChangeTextColor(color: colors[indexPath.row])
     }
     
 }
 
-extension AGFontInputView : UICollectionViewDelegateFlowLayout {
+extension AGColorInputView : UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return AGFontCollectionViewCell.cellSize()
+        return AGColorCollectionViewCell.cellSize()
     }
     
 }

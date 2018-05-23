@@ -23,10 +23,17 @@ public protocol AGToolBarDelegate {
     
 }
 
+
 public protocol AGFontInputViewDelegate {
     
-    func didChangeTextColor(color: UIColor)
+    
     func didChangeTextFont(fontName: String)
+    
+}
+
+public protocol AGColorInputViewDelegate {
+    
+    func didChangeTextColor(color: UIColor)
     
 }
 

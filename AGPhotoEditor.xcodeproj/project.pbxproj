@@ -14,6 +14,11 @@
 		E9031A7220B43C7600242A85 /* AGFontInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9031A7120B43C7600242A85 /* AGFontInputView.xib */; };
 		E9031A7620B43D1700242A85 /* AGFontCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9031A7420B43D1700242A85 /* AGFontCollectionViewCell.swift */; };
 		E9031A7720B43D1700242A85 /* AGFontCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9031A7520B43D1700242A85 /* AGFontCollectionViewCell.xib */; };
+		E9031A7A20B5418000242A85 /* AGColorInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9031A7920B5418000242A85 /* AGColorInputView.swift */; };
+		E9031A7C20B5418B00242A85 /* AGColorInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9031A7B20B5418B00242A85 /* AGColorInputView.xib */; };
+		E9031A7F20B5430400242A85 /* AGColorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9031A7D20B5430400242A85 /* AGColorCollectionViewCell.swift */; };
+		E9031A8020B5430400242A85 /* AGColorCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9031A7E20B5430400242A85 /* AGColorCollectionViewCell.xib */; };
+		E9031A8220B563F300242A85 /* AGInputViewsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9031A8120B563F300242A85 /* AGInputViewsDataSource.swift */; };
 		E9AFC8C720AD7B8B00FF76E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AFC8C620AD7B8B00FF76E2 /* AppDelegate.swift */; };
 		E9AFC8C920AD7B8B00FF76E2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AFC8C820AD7B8B00FF76E2 /* ViewController.swift */; };
 		E9AFC8CC20AD7B8B00FF76E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9AFC8CA20AD7B8B00FF76E2 /* Main.storyboard */; };
@@ -45,6 +50,11 @@
 		E9031A7120B43C7600242A85 /* AGFontInputView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AGFontInputView.xib; sourceTree = "<group>"; };
 		E9031A7420B43D1700242A85 /* AGFontCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AGFontCollectionViewCell.swift; sourceTree = "<group>"; };
 		E9031A7520B43D1700242A85 /* AGFontCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AGFontCollectionViewCell.xib; sourceTree = "<group>"; };
+		E9031A7920B5418000242A85 /* AGColorInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AGColorInputView.swift; sourceTree = "<group>"; };
+		E9031A7B20B5418B00242A85 /* AGColorInputView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AGColorInputView.xib; sourceTree = "<group>"; };
+		E9031A7D20B5430400242A85 /* AGColorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AGColorCollectionViewCell.swift; sourceTree = "<group>"; };
+		E9031A7E20B5430400242A85 /* AGColorCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AGColorCollectionViewCell.xib; sourceTree = "<group>"; };
+		E9031A8120B563F300242A85 /* AGInputViewsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AGInputViewsDataSource.swift; sourceTree = "<group>"; };
 		E9AFC8C320AD7B8B00FF76E2 /* AGPhotoEditor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AGPhotoEditor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9AFC8C620AD7B8B00FF76E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E9AFC8C820AD7B8B00FF76E2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -87,6 +97,7 @@
 				E9031A6C20B43C5800242A85 /* AGColorInputView */,
 				E9031A6D20B43C5900242A85 /* AGFontInputView */,
 				E9031A6E20B43C5900242A85 /* AGFormatInputView */,
+				E9031A8120B563F300242A85 /* AGInputViewsDataSource.swift */,
 			);
 			path = AGInputViews;
 			sourceTree = "<group>";
@@ -104,6 +115,9 @@
 		E9031A6C20B43C5800242A85 /* AGColorInputView */ = {
 			isa = PBXGroup;
 			children = (
+				E9031A7820B5416D00242A85 /* Cell */,
+				E9031A7920B5418000242A85 /* AGColorInputView.swift */,
+				E9031A7B20B5418B00242A85 /* AGColorInputView.xib */,
 			);
 			path = AGColorInputView;
 			sourceTree = "<group>";
@@ -130,6 +144,15 @@
 			children = (
 				E9031A7420B43D1700242A85 /* AGFontCollectionViewCell.swift */,
 				E9031A7520B43D1700242A85 /* AGFontCollectionViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		E9031A7820B5416D00242A85 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				E9031A7D20B5430400242A85 /* AGColorCollectionViewCell.swift */,
+				E9031A7E20B5430400242A85 /* AGColorCollectionViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -276,9 +299,11 @@
 				E9031A6920B43A2A00242A85 /* AGToolBar.xib in Resources */,
 				E9AFC8D120AD7B8E00FF76E2 /* LaunchScreen.storyboard in Resources */,
 				E9AFC90420AEFC4100FF76E2 /* AGCanvasView.xib in Resources */,
+				E9031A7C20B5418B00242A85 /* AGColorInputView.xib in Resources */,
 				E9AFC8DC20AD926600FF76E2 /* AGPhotoControlsViewController.xib in Resources */,
 				E9AFC8CE20AD7B8E00FF76E2 /* Assets.xcassets in Resources */,
 				E9AFC8F620ADB13200FF76E2 /* AGImagesViewController.xib in Resources */,
+				E9031A8020B5430400242A85 /* AGColorCollectionViewCell.xib in Resources */,
 				E9AFC8CC20AD7B8B00FF76E2 /* Main.storyboard in Resources */,
 				E9031A7220B43C7600242A85 /* AGFontInputView.xib in Resources */,
 				E9031A7720B43D1700242A85 /* AGFontCollectionViewCell.xib in Resources */,
@@ -292,9 +317,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9031A7F20B5430400242A85 /* AGColorCollectionViewCell.swift in Sources */,
 				E9AFC90C20AF19AE00FF76E2 /* AGCanvasView+UITextView.swift in Sources */,
 				E9AFC8DB20AD926600FF76E2 /* AGPhotoControlsViewController.swift in Sources */,
 				E9AFC8C920AD7B8B00FF76E2 /* ViewController.swift in Sources */,
+				E9031A7A20B5418000242A85 /* AGColorInputView.swift in Sources */,
 				E9031A6720B43A2A00242A85 /* AGToolBar+Protocol.swift in Sources */,
 				E9AFC8F120ADB0C200FF76E2 /* AGImageCollectionViewCell.swift in Sources */,
 				E9031A6820B43A2A00242A85 /* AGToolBar.swift in Sources */,
@@ -303,6 +330,7 @@
 				E9AFC8F520ADB13200FF76E2 /* AGImagesViewController.swift in Sources */,
 				E9AFC8DE20AD9EBF00FF76E2 /* AGPhotoControls+Controls.swift in Sources */,
 				E9AFC8F820ADB2A800FF76E2 /* AGProtocols.swift in Sources */,
+				E9031A8220B563F300242A85 /* AGInputViewsDataSource.swift in Sources */,
 				E9AFC90E20B3F13E00FF76E2 /* AGCanvasView+Drawing.swift in Sources */,
 				E9AFC8C720AD7B8B00FF76E2 /* AppDelegate.swift in Sources */,
 				E9AFC90A20AF192800FF76E2 /* AGCanvasView+Keyboard.swift in Sources */,
