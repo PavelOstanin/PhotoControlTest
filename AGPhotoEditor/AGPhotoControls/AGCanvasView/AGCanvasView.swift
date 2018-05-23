@@ -8,9 +8,15 @@
 
 import UIKit
 
+public protocol AGCanvasViewDelegate {
+    
+    func didChangeEditStatus(status: Bool)
+    
+}
+
 class AGCanvasView: UIView {
     
-
+    var canvasViewDelegate : AGCanvasViewDelegate?
     @IBOutlet var contentView: UIView!
     @IBOutlet weak var deleteView: UIView!
     var lastPanPoint: CGPoint?
@@ -45,7 +51,7 @@ class AGCanvasView: UIView {
         imageView.frame.size = CGSize(width: 150, height: 150)
         imageView.center = center
         
-        self.addSubview(imageView)
+        self.contentView.addSubview(imageView)
         //Gestures
         addGestures(view: imageView)
     }
@@ -70,7 +76,7 @@ class AGCanvasView: UIView {
         view.toolBarDelegate = self
         view.textView = textView
         textView.inputAccessoryView = view
-        addSubview(textView)
+        contentView.addSubview(textView)
         addGestures(view: textView)
         textView.becomeFirstResponder()
 
@@ -115,7 +121,9 @@ extension AGCanvasView: AGToolBarDelegate{
             view.fontInputViewDelegate = self
             activeTextView?.inputView = view
         case .format:
-            activeTextView?.inputView = nil
+            let view = AGFormatInputView.init(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: keyboardHeight))
+//            view.fontInputViewDelegate = self
+            activeTextView?.inputView = view
         case .color:
             let view = AGColorInputView.init(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: keyboardHeight))
             view.colorInputViewDelegate = self

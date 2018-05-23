@@ -10,6 +10,8 @@ import UIKit
 
 class AGPhotoControlsViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    @IBOutlet weak var doneButton: UIButton!
+    @IBOutlet weak var toolView: UIView!
     @IBOutlet weak var canvasView: AGCanvasView!
     let imagePicker = UIImagePickerController()
     /**
@@ -22,6 +24,7 @@ class AGPhotoControlsViewController: UIViewController, UIImagePickerControllerDe
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        canvasView.canvasViewDelegate = self
         imagePicker.delegate = self
         imagesViewController = AGImagesViewController(nibName: "AGImagesViewController", bundle: Bundle(for: AGImagesViewController.self))
     }
@@ -38,4 +41,13 @@ class AGPhotoControlsViewController: UIViewController, UIImagePickerControllerDe
         dismiss(animated: true, completion:nil)
     }
 
+}
+
+extension AGPhotoControlsViewController: AGCanvasViewDelegate {
+    
+    func didChangeEditStatus(status: Bool) {
+        doneButton.isHidden = !status
+        toolView.isHidden = status
+    }
+    
 }

@@ -16,12 +16,14 @@ extension AGCanvasView {
             let keyboardRectangle = keyboardFrame.cgRectValue
             keyboardHeight = keyboardRectangle.height - 45
         }
+        if isTyping {
+            canvasViewDelegate?.didChangeEditStatus(status: true)
+        }
     }
     
     func keyboardWillHide(notification: NSNotification) {
         isTyping = false
-//        doneButton.isHidden = true
-//        hideToolbar(hide: false)
+        canvasViewDelegate?.didChangeEditStatus(status: false)
     }
     
     func keyboardWillChangeFrame(_ notification: NSNotification) {

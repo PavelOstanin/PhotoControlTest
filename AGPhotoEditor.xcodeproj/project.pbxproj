@@ -19,6 +19,9 @@
 		E9031A7F20B5430400242A85 /* AGColorCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9031A7D20B5430400242A85 /* AGColorCollectionViewCell.swift */; };
 		E9031A8020B5430400242A85 /* AGColorCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9031A7E20B5430400242A85 /* AGColorCollectionViewCell.xib */; };
 		E9031A8220B563F300242A85 /* AGInputViewsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9031A8120B563F300242A85 /* AGInputViewsDataSource.swift */; };
+		E9031A8420B5B3E300242A85 /* UIView+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9031A8320B5B3E200242A85 /* UIView+Image.swift */; };
+		E9031A8620B5BA3800242A85 /* AGFormatInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9031A8520B5BA3800242A85 /* AGFormatInputView.swift */; };
+		E9031A8820B5BA8500242A85 /* AGFormatInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9031A8720B5BA8500242A85 /* AGFormatInputView.xib */; };
 		E9AFC8C720AD7B8B00FF76E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AFC8C620AD7B8B00FF76E2 /* AppDelegate.swift */; };
 		E9AFC8C920AD7B8B00FF76E2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AFC8C820AD7B8B00FF76E2 /* ViewController.swift */; };
 		E9AFC8CC20AD7B8B00FF76E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9AFC8CA20AD7B8B00FF76E2 /* Main.storyboard */; };
@@ -55,6 +58,9 @@
 		E9031A7D20B5430400242A85 /* AGColorCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AGColorCollectionViewCell.swift; sourceTree = "<group>"; };
 		E9031A7E20B5430400242A85 /* AGColorCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AGColorCollectionViewCell.xib; sourceTree = "<group>"; };
 		E9031A8120B563F300242A85 /* AGInputViewsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AGInputViewsDataSource.swift; sourceTree = "<group>"; };
+		E9031A8320B5B3E200242A85 /* UIView+Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Image.swift"; sourceTree = "<group>"; };
+		E9031A8520B5BA3800242A85 /* AGFormatInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AGFormatInputView.swift; sourceTree = "<group>"; };
+		E9031A8720B5BA8500242A85 /* AGFormatInputView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AGFormatInputView.xib; sourceTree = "<group>"; };
 		E9AFC8C320AD7B8B00FF76E2 /* AGPhotoEditor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AGPhotoEditor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9AFC8C620AD7B8B00FF76E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E9AFC8C820AD7B8B00FF76E2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -135,6 +141,8 @@
 		E9031A6E20B43C5900242A85 /* AGFormatInputView */ = {
 			isa = PBXGroup;
 			children = (
+				E9031A8520B5BA3800242A85 /* AGFormatInputView.swift */,
+				E9031A8720B5BA8500242A85 /* AGFormatInputView.xib */,
 			);
 			path = AGFormatInputView;
 			sourceTree = "<group>";
@@ -223,6 +231,7 @@
 			isa = PBXGroup;
 			children = (
 				E9AFC90720AEFD9A00FF76E2 /* UIImageView+Alpha.swift */,
+				E9031A8320B5B3E200242A85 /* UIView+Image.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -300,6 +309,7 @@
 				E9AFC8D120AD7B8E00FF76E2 /* LaunchScreen.storyboard in Resources */,
 				E9AFC90420AEFC4100FF76E2 /* AGCanvasView.xib in Resources */,
 				E9031A7C20B5418B00242A85 /* AGColorInputView.xib in Resources */,
+				E9031A8820B5BA8500242A85 /* AGFormatInputView.xib in Resources */,
 				E9AFC8DC20AD926600FF76E2 /* AGPhotoControlsViewController.xib in Resources */,
 				E9AFC8CE20AD7B8E00FF76E2 /* Assets.xcassets in Resources */,
 				E9AFC8F620ADB13200FF76E2 /* AGImagesViewController.xib in Resources */,
@@ -317,6 +327,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9031A8620B5BA3800242A85 /* AGFormatInputView.swift in Sources */,
+				E9031A8420B5B3E300242A85 /* UIView+Image.swift in Sources */,
 				E9031A7F20B5430400242A85 /* AGColorCollectionViewCell.swift in Sources */,
 				E9AFC90C20AF19AE00FF76E2 /* AGCanvasView+UITextView.swift in Sources */,
 				E9AFC8DB20AD926600FF76E2 /* AGPhotoControlsViewController.swift in Sources */,

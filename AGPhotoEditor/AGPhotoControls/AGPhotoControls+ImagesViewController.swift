@@ -13,7 +13,7 @@ extension AGPhotoControlsViewController {
     
     func addImagesViewController() {
         imagesVCIsVisible = true
-//        hideToolbar(hide: true)
+        self.toolView.isHidden = true
         self.canvasView.isUserInteractionEnabled = false
         imagesViewController.imagesViewControllerDelegate = self
         
@@ -41,7 +41,7 @@ extension AGPhotoControlsViewController {
         }, completion: { (finished) -> Void in
             self.imagesViewController.view.removeFromSuperview()
             self.imagesViewController.removeFromParentViewController()
-//            self.hideToolbar(hide: false)
+            self.toolView.isHidden = false
         })
     }
 }
@@ -55,7 +55,8 @@ extension AGPhotoControlsViewController: AGImagesViewControllerDelegate {
     
     func imagesViewDidDisappear() {
         imagesVCIsVisible = false
-//        hideToolbar(hide: false)
+        self.canvasView.isUserInteractionEnabled = true
+        self.toolView.isHidden = false
     }
 }
 

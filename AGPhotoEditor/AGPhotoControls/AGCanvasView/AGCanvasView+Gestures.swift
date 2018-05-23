@@ -98,7 +98,7 @@ extension AGCanvasView : UIGestureRecognizerDelegate {
         if let view = recognizer.view {
             if view is UIImageView {
                 //Tap only on visible parts on the image
-                for imageView in subImageViews(view: self) {
+                for imageView in subImageViews(view: self.contentView) {
                     let location = recognizer.location(in: imageView)
                     let alpha = imageView.alphaAtPoint(location)
                     if alpha > 0 {
@@ -156,12 +156,12 @@ extension AGCanvasView : UIGestureRecognizerDelegate {
      */
     
     func moveView(view: UIView, recognizer: UIPanGestureRecognizer)  {
-        
-//        hideToolbar(hide: true)
+    
+//        canvasViewDelegate?.didChangeEditStatus(status: true)
         deleteView.isHidden = false
 
         view.superview?.bringSubview(toFront: view)
-        let pointToSuperView = recognizer.location(in: self)
+        let pointToSuperView = recognizer.location(in: self.contentView)
 
         view.center = CGPoint(x: view.center.x + recognizer.translation(in: self).x,
                               y: view.center.y + recognizer.translation(in: self).y)
@@ -177,7 +177,7 @@ extension AGCanvasView : UIGestureRecognizerDelegate {
                 }
                 UIView.animate(withDuration: 0.3, animations: {
                     view.transform = view.transform.scaledBy(x: 0.25, y: 0.25)
-                    view.center = recognizer.location(in: self)
+                    view.center = recognizer.location(in: self.contentView)
                 })
             }
                 //View is going out of deleteView
@@ -185,7 +185,7 @@ extension AGCanvasView : UIGestureRecognizerDelegate {
                 //Scale to original Size
                 UIView.animate(withDuration: 0.3, animations: {
                     view.transform = view.transform.scaledBy(x: 4, y: 4)
-                    view.center = recognizer.location(in: self)
+                    view.center = recognizer.location(in: self.contentView)
                 })
             }
         }
@@ -193,9 +193,9 @@ extension AGCanvasView : UIGestureRecognizerDelegate {
 
         if recognizer.state == .ended {
             lastPanPoint = nil
-//            hideToolbar(hide: false)
+//            canvasViewDelegate?.didChangeEditStatus(status: false)
             deleteView.isHidden = true
-            let point = recognizer.location(in: self)
+            let point = recognizer.location(in: self.contentView)
 
             if deleteView.frame.contains(point) { // Delete the view
                 view.removeFromSuperview()
