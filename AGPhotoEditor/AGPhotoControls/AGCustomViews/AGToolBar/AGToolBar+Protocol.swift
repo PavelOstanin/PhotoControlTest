@@ -37,3 +37,11 @@ public protocol AGColorInputViewDelegate {
     
 }
 
+public protocol AGFormatInputViewDelegate {
+    
+    func didChangeTextAlignment(alignment: NSTextAlignment)
+    func didChangeTextSize(size: CGFloat)
+    func didChangeTextHeight(height: CGFloat)
+    func didChangeTextSpacing(space: CGFloat)
+}
+

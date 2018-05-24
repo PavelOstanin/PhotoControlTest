@@ -36,3 +36,11 @@ let fontsDataSource = ["Helvetica",
              "HoeflerText-Regular",
              "MyanmarSangamMN",
              "PingFangHK-Regular"]
+
+let constTextLineSpacing: CGFloat = 0
+let constTextKern: CGFloat = 0
+let constTextFontSize: CGFloat = 30
+let constTextFontName: String = "Helvetica"
+let constTextAlignment: NSTextAlignment = .center
+let constTextColor: UIColor = UIColor.red
+

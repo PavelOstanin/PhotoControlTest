@@ -90,7 +90,7 @@
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="eqw-YY-ybY">
+                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="25" minValue="20" maxValue="60" translatesAutoresizingMaskIntoConstraints="NO" id="eqw-YY-ybY">
                                     <rect key="frame" x="153" y="16.5" width="214" height="31"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="210" id="cP8-Mn-fy1"/>
@@ -117,7 +117,7 @@
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="WVe-H3-SCr">
+                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="25" minValue="0.0" maxValue="60" translatesAutoresizingMaskIntoConstraints="NO" id="WVe-H3-SCr">
                                     <rect key="frame" x="153" y="16.5" width="214" height="31"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="210" id="CKV-ZP-Yhz"/>
@@ -144,7 +144,7 @@
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="xN1-KB-0SH">
+                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="10" translatesAutoresizingMaskIntoConstraints="NO" id="xN1-KB-0SH">
                                     <rect key="frame" x="153" y="16" width="214" height="31"/>
                                     <constraints>
                                         <constraint firstAttribute="width" constant="210" id="bmr-jK-lXt"/>

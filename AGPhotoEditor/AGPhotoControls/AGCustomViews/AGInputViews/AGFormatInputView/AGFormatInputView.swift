@@ -14,6 +14,7 @@ class AGFormatInputView: UIView {
     @IBOutlet weak var sizeSliderView: UISlider!
     @IBOutlet weak var heightSliderView: UISlider!
     @IBOutlet weak var spacingSliderView: UISlider!
+    var formatInputViewDelegate : AGFormatInputViewDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -34,21 +35,27 @@ class AGFormatInputView: UIView {
     
     
     @IBAction func leftAlignmentDidTouch(_ sender: Any) {
+        formatInputViewDelegate?.didChangeTextAlignment(alignment: .left)
     }
     
     @IBAction func centerAlignmentDidTouch(_ sender: Any) {
+        formatInputViewDelegate?.didChangeTextAlignment(alignment: .center)
     }
     
     @IBAction func rightAlignmentDidTouch(_ sender: Any) {
+        formatInputViewDelegate?.didChangeTextAlignment(alignment: .right)
     }
     
-    @IBAction func sizeSliderDidChange(_ sender: Any) {
+    @IBAction func sizeSliderDidChange(_ sender: UISlider) {
+        formatInputViewDelegate?.didChangeTextSize(size: CGFloat(sender.value))
     }
     
-    @IBAction func heightSliderDidChange(_ sender: Any) {
+    @IBAction func heightSliderDidChange(_ sender: UISlider) {
+        formatInputViewDelegate?.didChangeTextHeight(height: CGFloat(sender.value))
     }
     
-    @IBAction func spacingSliserDidChange(_ sender: Any) {
+    @IBAction func spacingSliserDidChange(_ sender: UISlider) {
+        formatInputViewDelegate?.didChangeTextSpacing(space: CGFloat(sender.value))
     }
     
     

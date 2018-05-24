@@ -47,9 +47,16 @@ class AGCanvasView: UIView {
     
     func addImage(image: UIImage){
         let imageView = UIImageView(image: image)
+        var imageSize = image.size
+        if image.size.height/bounds.size.height > image.size.width/bounds.size.width {
+            imageSize = CGSize.init(width: image.size.width * (bounds.size.height/image.size.height), height: bounds.height)
+        }
+        else {
+            imageSize = CGSize.init(width: bounds.width, height: image.size.height * (bounds.size.width/image.size.width))
+        }
         imageView.contentMode = .scaleAspectFit
-        imageView.frame.size = CGSize(width: 150, height: 150)
-        imageView.center = center
+        imageView.frame.size = imageSize
+        imageView.center = contentView.center
         
         self.contentView.addSubview(imageView)
         //Gestures
@@ -62,13 +69,9 @@ class AGCanvasView: UIView {
                                                 width: UIScreen.main.bounds.width, height: 30))
         
         textView.textAlignment = .center
-        textView.font = UIFont(name: "Helvetica", size: 30)
-        textView.textColor = UIColor.red
-        textView.layer.shadowColor = UIColor.black.cgColor
-        textView.layer.shadowOffset = CGSize(width: 1.0, height: 0.0)
-        textView.layer.shadowOpacity = 0.2
-        textView.layer.shadowRadius = 1.0
-        textView.layer.backgroundColor = UIColor.clear.cgColor
+        textView.font = UIFont(name: constTextFontName, size: constTextFontSize)
+        textView.textColor = constTextColor
+        textView.backgroundColor = UIColor.clear
         textView.autocorrectionType = .no
         textView.isScrollEnabled = false
         textView.delegate = self
@@ -93,11 +96,13 @@ class AGCanvasView: UIView {
         panGesture.delegate = self
         view.addGestureRecognizer(panGesture)
         
-        let pinchGesture = UIPinchGestureRecognizer(target: self,
-                                                    action: #selector(AGCanvasView.pinchGesture))
-        pinchGesture.delegate = self
-        view.addGestureRecognizer(pinchGesture)
-        
+        if !(view is UITextView){
+            let pinchGesture = UIPinchGestureRecognizer(target: self,
+                                                        action: #selector(AGCanvasView.pinchGesture))
+            pinchGesture.delegate = self
+            view.addGestureRecognizer(pinchGesture)
+        }
+    
         let rotationGestureRecognizer = UIRotationGestureRecognizer(target: self,
                                                                     action:#selector(AGCanvasView.rotationGesture) )
         rotationGestureRecognizer.delegate = self
@@ -122,7 +127,7 @@ extension AGCanvasView: AGToolBarDelegate{
             activeTextView?.inputView = view
         case .format:
             let view = AGFormatInputView.init(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: keyboardHeight))
-//            view.fontInputViewDelegate = self
+            view.formatInputViewDelegate = self
             activeTextView?.inputView = view
         case .color:
             let view = AGColorInputView.init(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: keyboardHeight))
@@ -132,22 +137,6 @@ extension AGCanvasView: AGToolBarDelegate{
             activeTextView?.inputView = nil
         }
         activeTextView?.reloadInputViews()
-    }
-    
-}
-
-extension AGCanvasView: AGFontInputViewDelegate {
-    
-    func didChangeTextFont(fontName: String) {
-        activeTextView?.font = UIFont.init(name: fontName, size: (activeTextView?.font?.pointSize)!)
-    }
-    
-}
-
-extension AGCanvasView: AGColorInputViewDelegate {
-    
-    func didChangeTextColor(color: UIColor) {
-        activeTextView?.textColor = color
     }
     
 }

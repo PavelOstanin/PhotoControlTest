@@ -22,6 +22,8 @@
 		E9031A8420B5B3E300242A85 /* UIView+Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9031A8320B5B3E200242A85 /* UIView+Image.swift */; };
 		E9031A8620B5BA3800242A85 /* AGFormatInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9031A8520B5BA3800242A85 /* AGFormatInputView.swift */; };
 		E9031A8820B5BA8500242A85 /* AGFormatInputView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9031A8720B5BA8500242A85 /* AGFormatInputView.xib */; };
+		E9031A8A20B6AD4000242A85 /* AGCanvasView+InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9031A8920B6AD4000242A85 /* AGCanvasView+InputView.swift */; };
+		E9031A8C20B7043F00242A85 /* AGTextView+Attributed.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9031A8B20B7043F00242A85 /* AGTextView+Attributed.swift */; };
 		E9AFC8C720AD7B8B00FF76E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AFC8C620AD7B8B00FF76E2 /* AppDelegate.swift */; };
 		E9AFC8C920AD7B8B00FF76E2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AFC8C820AD7B8B00FF76E2 /* ViewController.swift */; };
 		E9AFC8CC20AD7B8B00FF76E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9AFC8CA20AD7B8B00FF76E2 /* Main.storyboard */; };
@@ -61,6 +63,8 @@
 		E9031A8320B5B3E200242A85 /* UIView+Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Image.swift"; sourceTree = "<group>"; };
 		E9031A8520B5BA3800242A85 /* AGFormatInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AGFormatInputView.swift; sourceTree = "<group>"; };
 		E9031A8720B5BA8500242A85 /* AGFormatInputView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AGFormatInputView.xib; sourceTree = "<group>"; };
+		E9031A8920B6AD4000242A85 /* AGCanvasView+InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AGCanvasView+InputView.swift"; sourceTree = "<group>"; };
+		E9031A8B20B7043F00242A85 /* AGTextView+Attributed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AGTextView+Attributed.swift"; sourceTree = "<group>"; };
 		E9AFC8C320AD7B8B00FF76E2 /* AGPhotoEditor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AGPhotoEditor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9AFC8C620AD7B8B00FF76E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E9AFC8C820AD7B8B00FF76E2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -220,6 +224,7 @@
 				E9AFC90020AEFC4100FF76E2 /* AGCanvasView+Gestures.swift */,
 				E9AFC90920AF192800FF76E2 /* AGCanvasView+Keyboard.swift */,
 				E9AFC90B20AF19AE00FF76E2 /* AGCanvasView+UITextView.swift */,
+				E9031A8920B6AD4000242A85 /* AGCanvasView+InputView.swift */,
 				E9AFC90120AEFC4100FF76E2 /* AGCanvasView.xib */,
 				E9AFC90220AEFC4100FF76E2 /* AGCanvasView.swift */,
 				E9AFC90D20B3F13E00FF76E2 /* AGCanvasView+Drawing.swift */,
@@ -232,6 +237,7 @@
 			children = (
 				E9AFC90720AEFD9A00FF76E2 /* UIImageView+Alpha.swift */,
 				E9031A8320B5B3E200242A85 /* UIView+Image.swift */,
+				E9031A8B20B7043F00242A85 /* AGTextView+Attributed.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -331,6 +337,7 @@
 				E9031A8420B5B3E300242A85 /* UIView+Image.swift in Sources */,
 				E9031A7F20B5430400242A85 /* AGColorCollectionViewCell.swift in Sources */,
 				E9AFC90C20AF19AE00FF76E2 /* AGCanvasView+UITextView.swift in Sources */,
+				E9031A8A20B6AD4000242A85 /* AGCanvasView+InputView.swift in Sources */,
 				E9AFC8DB20AD926600FF76E2 /* AGPhotoControlsViewController.swift in Sources */,
 				E9AFC8C920AD7B8B00FF76E2 /* ViewController.swift in Sources */,
 				E9031A7A20B5418000242A85 /* AGColorInputView.swift in Sources */,
@@ -345,6 +352,7 @@
 				E9031A8220B563F300242A85 /* AGInputViewsDataSource.swift in Sources */,
 				E9AFC90E20B3F13E00FF76E2 /* AGCanvasView+Drawing.swift in Sources */,
 				E9AFC8C720AD7B8B00FF76E2 /* AppDelegate.swift in Sources */,
+				E9031A8C20B7043F00242A85 /* AGTextView+Attributed.swift in Sources */,
 				E9AFC90A20AF192800FF76E2 /* AGCanvasView+Keyboard.swift in Sources */,
 				E9031A7020B43C6800242A85 /* AGFontInputView.swift in Sources */,
 				E9AFC8FA20ADBA4700FF76E2 /* AGPhotoControls+ImagesViewController.swift in Sources */,
