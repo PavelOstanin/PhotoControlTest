@@ -17,13 +17,13 @@ extension AGCanvasView {
             keyboardHeight = keyboardRectangle.height - 45
         }
         if isTyping {
-            canvasViewDelegate?.didChangeEditStatus(status: true)
+            canvasViewDelegate?.didChangeEditMode(mode: .text)
         }
     }
     
     func keyboardWillHide(notification: NSNotification) {
         isTyping = false
-        canvasViewDelegate?.didChangeEditStatus(status: false)
+        canvasViewDelegate?.didFinishEdit()
     }
     
     func keyboardWillChangeFrame(_ notification: NSNotification) {

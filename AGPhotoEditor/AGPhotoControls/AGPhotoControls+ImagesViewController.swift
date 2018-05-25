@@ -44,6 +44,7 @@ extension AGPhotoControlsViewController {
             self.toolView.isHidden = false
         })
     }
+    
 }
 
 extension AGPhotoControlsViewController: AGImagesViewControllerDelegate {

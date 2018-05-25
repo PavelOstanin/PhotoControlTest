@@ -38,7 +38,6 @@ class AGFormatInputView: UIView {
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
     }
     
-    
     @IBAction func leftAlignmentDidTouch(_ sender: Any) {
         formatInputViewDelegate?.didChangeTextAlignment(alignment: .left)
     }

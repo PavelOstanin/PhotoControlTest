@@ -45,9 +45,14 @@ class AGPhotoControlsViewController: UIViewController, UIImagePickerControllerDe
 
 extension AGPhotoControlsViewController: AGCanvasViewDelegate {
     
-    func didChangeEditStatus(status: Bool) {
-        doneButton.isHidden = !status
-        toolView.isHidden = status
+    func didChangeEditMode(mode: EditMode) {
+        doneButton.isHidden = false
+        toolView.isHidden = true
+    }
+    
+    func didFinishEdit() {
+        doneButton.isHidden = true
+        toolView.isHidden = false
     }
     
 }

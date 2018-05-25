@@ -9,7 +9,7 @@
 import UIKit
 
 // MARK: - Control
-public enum editMode {
+public enum EditMode {
     case sticker
     case draw
     case text
@@ -19,7 +19,8 @@ public enum editMode {
 
 public protocol AGCanvasViewDelegate {
     
-    func didChangeEditStatus(status: Bool)
+    func didChangeEditMode(mode: EditMode)
+    func didFinishEdit()
     
 }
 

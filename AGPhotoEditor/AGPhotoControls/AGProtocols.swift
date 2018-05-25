@@ -8,26 +8,11 @@
 
 import Foundation
 import UIKit
-/**
- - didSelectImage
- - stickersViewDidDisappear
- */
-
-public protocol PhotoEditorDelegate {
-    /**
-     - Parameter image: edited Image
-     */
-    func doneEditing(image: UIImage)
-    /**
-     StickersViewController did Disappear
-     */
-    func canceledEditing()
-}
 
 
 /**
  - didSelectImage
- - imagessViewDidDisappear
+ - imagesViewDidDisappear
  */
 protocol AGImagesViewControllerDelegate {
     /**
@@ -35,14 +20,7 @@ protocol AGImagesViewControllerDelegate {
      */
     func didSelectImage(image: UIImage)
     /**
-     StickersViewController did Disappear
+     ImagesViewController did Disappear
      */
     func imagesViewDidDisappear()
-}
-
-/**
- - didSelectColor
- */
-protocol ColorDelegate {
-    func didSelectColor(color: UIColor)
 }

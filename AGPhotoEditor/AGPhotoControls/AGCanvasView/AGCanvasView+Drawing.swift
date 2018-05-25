@@ -18,28 +18,16 @@ extension AGCanvasView {
                 lastPoint = touch.location(in: self)
             }
         }
-            //Hide stickersVC if clicked outside it
-//        else if stickersVCIsVisible == true {
-//            if let touch = touches.first {
-//                let location = touch.location(in: self.view)
-//                if !stickersViewController.view.frame.contains(location) {
-//                    removeStickersView()
-//                }
-//            }
-//        }
         
     }
     
     override public func touchesMoved(_ touches: Set<UITouch>,
                                       with event: UIEvent?){
         if isDrawing {
-            // 6
             swiped = true
             if let touch = touches.first {
                 let currentPoint = touch.location(in: self)
                 drawLineFrom(lastPoint, toPoint: currentPoint)
-                
-                // 7
                 lastPoint = currentPoint
             }
         }
