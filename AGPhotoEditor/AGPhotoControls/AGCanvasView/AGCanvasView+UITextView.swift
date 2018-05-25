@@ -12,21 +12,17 @@ import UIKit
 extension AGCanvasView: UITextViewDelegate {
     
     public func textViewDidChange(_ textView: UITextView) {
-//        let rotation = atan2(textView.transform.b, textView.transform.a)
-//        if rotation == 0 {
-            let oldFrame = textView.bounds
-            let sizeToFit = textView.sizeThatFits(CGSize(width: oldFrame.width, height:CGFloat.greatestFiniteMagnitude))
-            textView.bounds.size = CGSize(width: oldFrame.width, height: sizeToFit.height)
-//        }
+        let oldFrame = textView.bounds
+        let sizeToFit = textView.sizeThatFits(CGSize(width: oldFrame.width, height:CGFloat.greatestFiniteMagnitude))
+        textView.bounds.size = CGSize(width: oldFrame.width, height: sizeToFit.height)
     }
+    
     public func textViewDidBeginEditing(_ textView: UITextView) {
         isTyping = true
         lastTextViewTransform =  textView.transform
         lastTextViewTransCenter = textView.center
-//        lastTextViewFont = textView.font!
         activeTextView = textView
         textView.superview?.bringSubview(toFront: textView)
-//        textView.font = UIFont(name: "Helvetica", size: 30)
         UIView.animate(withDuration: 0.3
             ,
                        animations: {
@@ -43,7 +39,6 @@ extension AGCanvasView: UITextViewDelegate {
                 return
         }
         activeTextView = nil
-//        textView.font = self.lastTextViewFont!
         UIView.animate(withDuration: 0.3,
                        animations: {
                         textView.transform = self.lastTextViewTransform!

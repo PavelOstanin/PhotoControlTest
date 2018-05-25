@@ -16,6 +16,11 @@ class AGFormatInputView: UIView {
     @IBOutlet weak var spacingSliderView: UISlider!
     var formatInputViewDelegate : AGFormatInputViewDelegate?
     
+    convenience init(textView: UITextView, frame: CGRect){
+        self.init(frame: frame)
+        self.setupWithTextView(textView: textView)
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         nibSetup()
@@ -58,6 +63,14 @@ class AGFormatInputView: UIView {
         formatInputViewDelegate?.didChangeTextSpacing(space: CGFloat(sender.value))
     }
     
-    
+    private func setupWithTextView(textView: UITextView){
+        var attributes = textView.getCurrentTextAttributes()
+        let fontSize = textView.font?.pointSize
+        let height = textView.getCurrentTextParagraphStyle().lineSpacing
+        let spacing = attributes[NSAttributedStringKey.kern]
+        sizeSliderView.value = Float(fontSize!)
+        heightSliderView.value = Float(height)
+        spacingSliderView.value = Float(spacing as! CGFloat)
+    }
     
 }

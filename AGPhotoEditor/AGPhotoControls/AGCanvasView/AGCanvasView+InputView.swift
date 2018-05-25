@@ -12,6 +12,7 @@ extension AGCanvasView: AGFontInputViewDelegate {
     
     func didChangeTextFont(fontName: String) {
         activeTextView?.font = UIFont.init(name: fontName, size: (activeTextView?.font?.pointSize)!)
+        self.textViewDidChange(activeTextView!)
     }
     
 }

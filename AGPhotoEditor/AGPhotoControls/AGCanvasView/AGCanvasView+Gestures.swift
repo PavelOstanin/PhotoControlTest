@@ -95,19 +95,21 @@ extension AGCanvasView : UIGestureRecognizerDelegate {
      Selecting transparent parts of the imageview won't move the object
      */
     @objc func tapGesture(_ recognizer: UITapGestureRecognizer) {
-        if let view = recognizer.view {
-            if view is UIImageView {
-                //Tap only on visible parts on the image
-                for imageView in subImageViews(view: self.contentView) {
-                    let location = recognizer.location(in: imageView)
-                    let alpha = imageView.alphaAtPoint(location)
-                    if alpha > 0 {
-                        scaleEffect(view: imageView)
-                        break
-                    }
+        for imageView in self.contentView.subviews{
+            if imageView is UIImageView {
+                let location = recognizer.location(in: imageView)
+                let alpha = (imageView as! UIImageView).alphaAtPoint(location)
+                if alpha > 0 {
+                    scaleEffect(view: imageView)
+                    break
                 }
-            } else {
-                scaleEffect(view: view)
+            }
+            else{
+                let location = recognizer.location(in: imageView.superview)
+                if imageView.frame.contains(location){
+                    scaleEffect(view: imageView)
+                    break
+                }
             }
         }
     }
@@ -115,6 +117,7 @@ extension AGCanvasView : UIGestureRecognizerDelegate {
     /*
      Support Multiple Gesture at the same time
      */
+    
     public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
     }

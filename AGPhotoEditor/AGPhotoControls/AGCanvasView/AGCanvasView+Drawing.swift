@@ -84,6 +84,7 @@ extension AGCanvasView {
         line.strokeColor = UIColor.red.cgColor
         line.lineWidth = 5
         line.lineJoin = kCALineJoinRound
+        line.lineCap = kCALineCapRound
         self.imageViewForDraw.layer.addSublayer(line)
         
         

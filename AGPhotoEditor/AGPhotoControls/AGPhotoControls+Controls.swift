@@ -9,17 +9,6 @@
 import Foundation
 import UIKit
 
-// MARK: - Control
-public enum control {
-    case crop
-    case sticker
-    case draw
-    case text
-    case save
-    case share
-    case clear
-}
-
 extension AGPhotoControlsViewController {
     
     @IBAction func stickersButtonTapped(_ sender: Any) {

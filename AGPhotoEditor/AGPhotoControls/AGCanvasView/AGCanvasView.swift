@@ -8,6 +8,15 @@
 
 import UIKit
 
+// MARK: - Control
+public enum editMode {
+    case sticker
+    case draw
+    case text
+    case image
+}
+
+
 public protocol AGCanvasViewDelegate {
     
     func didChangeEditStatus(status: Bool)
@@ -38,8 +47,12 @@ class AGCanvasView: UIView {
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
         Bundle.main.loadNibNamed("AGCanvasView", owner: self, options: nil)
-        self.addSubview(contentView);
+        self.addSubview(contentView)
+        self.addSubview(imageViewForDraw)
+        self.addSubview(deleteView)
+        imageViewForDraw.frame = self.bounds
         contentView.frame = self.bounds
+        deleteView.frame = CGRect.init(x: self.bounds.size.width - deleteView.frame.size.width, y: self.bounds.size.height - deleteView.frame.size.height, width: deleteView.frame.size.width, height: deleteView.frame.size.height)
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow),
                                                name: .UIKeyboardDidShow, object: nil)
@@ -113,6 +126,10 @@ class AGCanvasView: UIView {
         
     }
     
+    func clearDrawImage() {
+        self.imageViewForDraw.layer.sublayers?.removeAll()
+    }
+    
 }
 
 extension AGCanvasView: AGToolBarDelegate{
@@ -126,7 +143,7 @@ extension AGCanvasView: AGToolBarDelegate{
             view.fontInputViewDelegate = self
             activeTextView?.inputView = view
         case .format:
-            let view = AGFormatInputView.init(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: keyboardHeight))
+            let view = AGFormatInputView.init(textView: activeTextView!, frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: keyboardHeight))
             view.formatInputViewDelegate = self
             activeTextView?.inputView = view
         case .color:
