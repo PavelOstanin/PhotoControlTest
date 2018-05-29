@@ -27,8 +27,7 @@ extension AGPhotoControlsViewController {
     
     @IBAction func doneButtonTapped(_ sender: Any) {
         view.endEditing(true)
-        doneButton.isHidden = true
-        toolView.isHidden = false
+        didFinishEdit()
         canvasView.contentView.isUserInteractionEnabled = true
         canvasView.isDrawing = false
     }
@@ -36,8 +35,19 @@ extension AGPhotoControlsViewController {
     @IBAction func drawButtonTapped(_ sender: Any) {
         canvasView.isDrawing = true
         canvasView.contentView.isUserInteractionEnabled = false
-        doneButton.isHidden = false
-        toolView.isHidden = true
+        didChangeEditMode(mode: .draw)
+    }
+    
+    @IBAction func repoTapped(_ sender: Any) {
+        
+    }
+    
+    @IBAction func undoTapped(_ sender: Any) {
+        
+    }
+    
+    @IBAction func clearTapped(_ sender: Any) {
+        
     }
 
     

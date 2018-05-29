@@ -10,6 +10,7 @@ import UIKit
 
 class AGPhotoControlsViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    @IBOutlet weak var drawToolView: UIView!
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var toolView: UIView!
     @IBOutlet weak var canvasView: AGCanvasView!
@@ -48,9 +49,13 @@ extension AGPhotoControlsViewController: AGCanvasViewDelegate {
     func didChangeEditMode(mode: EditMode) {
         doneButton.isHidden = false
         toolView.isHidden = true
+        if mode == .draw{
+            drawToolView.isHidden = false
+        }
     }
     
     func didFinishEdit() {
+        drawToolView.isHidden = true
         doneButton.isHidden = true
         toolView.isHidden = false
     }
