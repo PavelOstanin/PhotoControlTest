@@ -43,18 +43,23 @@ class AGCanvasView: UIView {
     
     var keyboardHeight: CGFloat = 0
     
-    var brush = AGBrush()
-    let session = AGDrawSession()
-    var drawing = AGDrawing()
+    /// Should be set in whichever class is using the TouchDrawView
+    open weak var delegate: AGCanvasDrawViewDelegate?
+    
+    /// Used to register undo and redo actions
+    var drawUndoManager: UndoManager!
+    
     let path = UIBezierPath()
     let scale = UIScreen.main.scale
-    
-    var tempImageView = UIImageView()
-    
-    var saved = false
     var pointMoved = false
     var pointIndex = 0
     var points = [CGPoint?](repeating: CGPoint.zero, count: 5)
+    
+    /// Used to keep track of all the strokes
+    var stack: [AGStroke]!
+    
+    /// Used to keep track of the current StrokeSettings
+    var settings: AGStrokeSettings!
     
     @IBOutlet weak var imageViewForDraw: UIImageView!
     
@@ -63,15 +68,20 @@ class AGCanvasView: UIView {
         Bundle.main.loadNibNamed("AGCanvasView", owner: self, options: nil)
         self.addSubview(contentView)
         self.addSubview(imageViewForDraw)
-        self.addSubview(self.tempImageView)
         self.addSubview(deleteView)
         imageViewForDraw.frame = self.bounds
-        tempImageView.frame = self.bounds
         contentView.frame = self.bounds
         deleteView.frame = CGRect.init(x: self.bounds.size.width - deleteView.frame.size.width, y: self.bounds.size.height - deleteView.frame.size.height, width: deleteView.frame.size.width, height: deleteView.frame.size.height)
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow),
                                                name: .UIKeyboardDidShow, object: nil)
+        stack = []
+        settings = AGStrokeSettings()
+        drawUndoManager = undoManager
+        if drawUndoManager == nil {
+            drawUndoManager = UndoManager()
+        }
+
     }
     
     func addImage(image: UIImage){

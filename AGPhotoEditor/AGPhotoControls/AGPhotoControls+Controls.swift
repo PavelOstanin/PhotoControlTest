@@ -39,15 +39,15 @@ extension AGPhotoControlsViewController {
     }
     
     @IBAction func repoTapped(_ sender: Any) {
-        
+        canvasView.redo()
     }
     
     @IBAction func undoTapped(_ sender: Any) {
-        
+        canvasView.undo()
     }
     
     @IBAction func clearTapped(_ sender: Any) {
-        
+        canvasView.clearDrawing()
     }
 
     

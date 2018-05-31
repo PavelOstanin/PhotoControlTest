@@ -25,9 +25,8 @@
 		E9031A8A20B6AD4000242A85 /* AGCanvasView+InputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9031A8920B6AD4000242A85 /* AGCanvasView+InputView.swift */; };
 		E9031A8C20B7043F00242A85 /* AGTextView+Attributed.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9031A8B20B7043F00242A85 /* AGTextView+Attributed.swift */; };
 		E9031A8F20BD4B8E00242A85 /* AGCanvasView+Drawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9031A8E20BD4B8E00242A85 /* AGCanvasView+Drawing.swift */; };
-		E9031A9120BD4CD700242A85 /* AGBrush.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9031A9020BD4CD700242A85 /* AGBrush.swift */; };
-		E9031A9320BD4CE800242A85 /* AGDrawSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9031A9220BD4CE800242A85 /* AGDrawSession.swift */; };
-		E9031A9520BD4D6C00242A85 /* AGDrawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9031A9420BD4D6C00242A85 /* AGDrawing.swift */; };
+		E9031A9720BD65F200242A85 /* AGStroke.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9031A9620BD65F200242A85 /* AGStroke.swift */; };
+		E9031A9920BD660500242A85 /* AGStrokeSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9031A9820BD660500242A85 /* AGStrokeSettings.swift */; };
 		E9AFC8C720AD7B8B00FF76E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AFC8C620AD7B8B00FF76E2 /* AppDelegate.swift */; };
 		E9AFC8C920AD7B8B00FF76E2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AFC8C820AD7B8B00FF76E2 /* ViewController.swift */; };
 		E9AFC8CC20AD7B8B00FF76E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9AFC8CA20AD7B8B00FF76E2 /* Main.storyboard */; };
@@ -69,9 +68,8 @@
 		E9031A8920B6AD4000242A85 /* AGCanvasView+InputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AGCanvasView+InputView.swift"; sourceTree = "<group>"; };
 		E9031A8B20B7043F00242A85 /* AGTextView+Attributed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AGTextView+Attributed.swift"; sourceTree = "<group>"; };
 		E9031A8E20BD4B8E00242A85 /* AGCanvasView+Drawing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AGCanvasView+Drawing.swift"; sourceTree = "<group>"; };
-		E9031A9020BD4CD700242A85 /* AGBrush.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AGBrush.swift; sourceTree = "<group>"; };
-		E9031A9220BD4CE800242A85 /* AGDrawSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AGDrawSession.swift; sourceTree = "<group>"; };
-		E9031A9420BD4D6C00242A85 /* AGDrawing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AGDrawing.swift; sourceTree = "<group>"; };
+		E9031A9620BD65F200242A85 /* AGStroke.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AGStroke.swift; sourceTree = "<group>"; };
+		E9031A9820BD660500242A85 /* AGStrokeSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AGStrokeSettings.swift; sourceTree = "<group>"; };
 		E9AFC8C320AD7B8B00FF76E2 /* AGPhotoEditor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AGPhotoEditor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9AFC8C620AD7B8B00FF76E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E9AFC8C820AD7B8B00FF76E2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -179,9 +177,8 @@
 			isa = PBXGroup;
 			children = (
 				E9031A8E20BD4B8E00242A85 /* AGCanvasView+Drawing.swift */,
-				E9031A9020BD4CD700242A85 /* AGBrush.swift */,
-				E9031A9220BD4CE800242A85 /* AGDrawSession.swift */,
-				E9031A9420BD4D6C00242A85 /* AGDrawing.swift */,
+				E9031A9620BD65F200242A85 /* AGStroke.swift */,
+				E9031A9820BD660500242A85 /* AGStrokeSettings.swift */,
 			);
 			path = Drawing;
 			sourceTree = "<group>";
@@ -359,6 +356,7 @@
 				E9AFC8C920AD7B8B00FF76E2 /* ViewController.swift in Sources */,
 				E9031A7A20B5418000242A85 /* AGColorInputView.swift in Sources */,
 				E9031A6720B43A2A00242A85 /* AGToolBar+Protocol.swift in Sources */,
+				E9031A9720BD65F200242A85 /* AGStroke.swift in Sources */,
 				E9AFC8F120ADB0C200FF76E2 /* AGImageCollectionViewCell.swift in Sources */,
 				E9031A6820B43A2A00242A85 /* AGToolBar.swift in Sources */,
 				E9AFC90320AEFC4100FF76E2 /* AGCanvasView+Gestures.swift in Sources */,
@@ -369,14 +367,12 @@
 				E9AFC8F820ADB2A800FF76E2 /* AGProtocols.swift in Sources */,
 				E9031A8220B563F300242A85 /* AGInputViewsDataSource.swift in Sources */,
 				E9AFC8C720AD7B8B00FF76E2 /* AppDelegate.swift in Sources */,
-				E9031A9320BD4CE800242A85 /* AGDrawSession.swift in Sources */,
 				E9031A8C20B7043F00242A85 /* AGTextView+Attributed.swift in Sources */,
-				E9031A9120BD4CD700242A85 /* AGBrush.swift in Sources */,
 				E9AFC90A20AF192800FF76E2 /* AGCanvasView+Keyboard.swift in Sources */,
 				E9031A7020B43C6800242A85 /* AGFontInputView.swift in Sources */,
 				E9AFC8FA20ADBA4700FF76E2 /* AGPhotoControls+ImagesViewController.swift in Sources */,
 				E9AFC90520AEFC4100FF76E2 /* AGCanvasView.swift in Sources */,
-				E9031A9520BD4D6C00242A85 /* AGDrawing.swift in Sources */,
+				E9031A9920BD660500242A85 /* AGStrokeSettings.swift in Sources */,
 				E9031A7620B43D1700242A85 /* AGFontCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
