@@ -19,6 +19,7 @@ class AGFormatInputView: UIView {
     convenience init(textView: UITextView, frame: CGRect){
         self.init(frame: frame)
         self.setupWithTextView(textView: textView)
+        self.setupConstValue()
     }
     
     override init(frame: CGRect) {
@@ -36,6 +37,25 @@ class AGFormatInputView: UIView {
         self.addSubview(contentView);
         contentView.frame = bounds
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+    }
+    
+    private func setupWithTextView(textView: UITextView){
+        var attributes = textView.getCurrentTextAttributes()
+        let fontSize = textView.font?.pointSize
+        let height = textView.getCurrentTextParagraphStyle().lineSpacing
+        let spacing = attributes[NSAttributedStringKey.kern]
+        sizeSliderView.value = Float(fontSize!)
+        heightSliderView.value = Float(height)
+        spacingSliderView.value = Float(spacing as! CGFloat)
+    }
+    
+    private func setupConstValue(){
+        sizeSliderView.minimumValue = Float(constMinimumFontSize)
+        sizeSliderView.maximumValue = Float(constMaximumFontSize)
+        heightSliderView.minimumValue = Float(constMinimumFontHeight)
+        heightSliderView.maximumValue = Float(constMaximumFontHeight)
+        spacingSliderView.minimumValue = Float(constMinimumFontSpace)
+        spacingSliderView.maximumValue = Float(constMaximumFontSpace)
     }
     
     @IBAction func leftAlignmentDidTouch(_ sender: Any) {
@@ -60,16 +80,6 @@ class AGFormatInputView: UIView {
     
     @IBAction func spacingSliserDidChange(_ sender: UISlider) {
         formatInputViewDelegate?.didChangeTextSpacing(space: CGFloat(sender.value))
-    }
-    
-    private func setupWithTextView(textView: UITextView){
-        var attributes = textView.getCurrentTextAttributes()
-        let fontSize = textView.font?.pointSize
-        let height = textView.getCurrentTextParagraphStyle().lineSpacing
-        let spacing = attributes[NSAttributedStringKey.kern]
-        sizeSliderView.value = Float(fontSize!)
-        heightSliderView.value = Float(height)
-        spacingSliderView.value = Float(spacing as! CGFloat)
     }
     
 }

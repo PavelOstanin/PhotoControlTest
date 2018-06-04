@@ -39,11 +39,11 @@ extension AGCanvasView : UIGestureRecognizerDelegate {
                     var newScale = currentFontSize * recognizer.scale;
                     
                     
-                    if (newScale < 20.0) {
-                        newScale = 20.0;
+                    if (newScale < constMinimumFontSize) {
+                        newScale = constMinimumFontSize;
                     }
-                    if (newScale > 60.0) {
-                        newScale = 60.0;
+                    if (newScale > constMaximumFontSize) {
+                        newScale = constMaximumFontSize;
                     }
                     
                     attributes[NSAttributedStringKey.font] = UIFont.init(name: font.fontName, size: newScale)
