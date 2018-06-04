@@ -29,35 +29,14 @@ extension AGCanvasView : UIGestureRecognizerDelegate {
         if let view = recognizer.view {
             if view is UITextView {
                 let textView = view as! UITextView
-//
-//                if textView.font!.pointSize * recognizer.scale < 90 {
-//                    let font = UIFont(name: textView.font!.fontName, size: textView.font!.pointSize * recognizer.scale)
-//                    textView.font = font
-//                    let sizeToFit = textView.sizeThatFits(CGSize(width: UIScreen.main.bounds.size.width,
-//                                                                 height:CGFloat.greatestFiniteMagnitude))
-//                    textView.bounds.size = CGSize(width: textView.intrinsicContentSize.width,
-//                                                  height: sizeToFit.height)
-//                } else {
-//                    let sizeToFit = textView.sizeThatFits(CGSize(width: UIScreen.main.bounds.size.width,
-//                                                                 height:CGFloat.greatestFiniteMagnitude))
-//                    textView.bounds.size = CGSize(width: textView.intrinsicContentSize.width,
-//                                                  height: sizeToFit.height)
-//                }
-//
-//
-//                textView.setNeedsDisplay()
-                
-                /////////
-//                let scale = recognizer.scale;
-//                textView.font = UIFont(name: textView.font!.fontName, size: textView.font!.pointSize * scale)
-//                print(textView.font!.pointSize)
-//                self.textViewDidChange(textView)
-                
                 if (recognizer.state == .ended
                     || recognizer.state == .changed) {
                     
-                    let currentFontSize = textView.font?.pointSize;
-                    var newScale = currentFontSize! * recognizer.scale;
+                    var attributes = textView.getCurrentTextAttributes()
+                    let font = attributes[NSAttributedStringKey.font] as! UIFont
+                    
+                    let currentFontSize = font.pointSize;
+                    var newScale = currentFontSize * recognizer.scale;
                     
                     
                     if (newScale < 20.0) {
@@ -67,9 +46,10 @@ extension AGCanvasView : UIGestureRecognizerDelegate {
                         newScale = 60.0;
                     }
                     
-                    textView.font = UIFont(name: textView.font!.fontName, size: newScale)
+                    attributes[NSAttributedStringKey.font] = UIFont.init(name: font.fontName, size: newScale)
+                    textView.attributedText = NSAttributedString(string: textView.text ?? "", attributes: attributes)
                     recognizer.scale = 1;
-//                    self.textViewDidChange(textView)
+                    self.textViewDidChange(textView)
                     
                 }
             } else {

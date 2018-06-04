@@ -27,14 +27,14 @@ extension AGCanvasView: UITextViewDelegate {
             ,
                        animations: {
                         textView.transform = CGAffineTransform.identity
-                        textView.center = CGPoint(x: UIScreen.main.bounds.width / 2,
-                                                  y:  UIScreen.main.bounds.height / 5)
+                        textView.center = CGPoint(x: self.bounds.width / 2,
+                                                  y:  self.bounds.height / 5)
         }, completion: nil)
         
     }
     
     public func textViewDidEndEditing(_ textView: UITextView) {
-        guard lastTextViewTransform != nil && lastTextViewTransCenter != nil && lastTextViewFont != nil
+        guard lastTextViewTransform != nil && lastTextViewTransCenter != nil
             else {
                 return
         }

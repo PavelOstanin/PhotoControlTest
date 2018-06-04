@@ -18,9 +18,14 @@ extension UITextView {
                 space = spaceTemp as! CGFloat
             }
         }
-        if let color = self.textColor,
-            let font = self.font {
-            return [NSAttributedStringKey.kern : space, NSAttributedStringKey.paragraphStyle : style, NSAttributedStringKey.foregroundColor : color, NSAttributedStringKey.font : font] as [NSAttributedStringKey : Any]
+        var font = UIFont.init(name: constTextFontName, size: constTextFontSize)
+        if (self.attributedText.string.count != 0){
+            if let fontTemp = self.attributedText.attributes(at: 0, effectiveRange: nil)[NSAttributedStringKey.font] {
+                font = fontTemp as? UIFont
+            }
+        }
+        if let color = self.textColor{
+            return [NSAttributedStringKey.kern : space, NSAttributedStringKey.paragraphStyle : style, NSAttributedStringKey.foregroundColor : color, NSAttributedStringKey.font : font as Any] as [NSAttributedStringKey : Any]
         }
         return [:]
     }

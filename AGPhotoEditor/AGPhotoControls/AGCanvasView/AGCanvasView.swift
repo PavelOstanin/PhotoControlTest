@@ -25,6 +25,9 @@ public protocol AGCanvasViewDelegate {
 }
 
 class AGCanvasView: UIView {
+
+    
+    
     
     var canvasViewDelegate : AGCanvasViewDelegate?
     @IBOutlet var contentView: UIView!
@@ -81,7 +84,7 @@ class AGCanvasView: UIView {
         if drawUndoManager == nil {
             drawUndoManager = UndoManager()
         }
-
+        
     }
     
     func addImage(image: UIImage){
@@ -105,8 +108,9 @@ class AGCanvasView: UIView {
     func addTextView() {
         isTyping = true
         let textView = UITextView(frame: CGRect(x: 0, y: center.y,
-                                                width: UIScreen.main.bounds.width, height: 30))
-        
+                                                width: bounds.width, height: 30))
+        textView.center = CGPoint(x: self.bounds.width / 2,
+                                  y:  self.bounds.height / 5)
         textView.textAlignment = .center
         textView.font = UIFont(name: constTextFontName, size: constTextFontSize)
         textView.textColor = constTextColor
@@ -135,12 +139,12 @@ class AGCanvasView: UIView {
         panGesture.delegate = self
         view.addGestureRecognizer(panGesture)
         
-        if !(view is UITextView){
+//        if !(view is UITextView){
             let pinchGesture = UIPinchGestureRecognizer(target: self,
                                                         action: #selector(AGCanvasView.pinchGesture))
             pinchGesture.delegate = self
             view.addGestureRecognizer(pinchGesture)
-        }
+//        }
     
         let rotationGestureRecognizer = UIRotationGestureRecognizer(target: self,
                                                                     action:#selector(AGCanvasView.rotationGesture) )

@@ -44,3 +44,12 @@ let constTextFontName: String = "Helvetica"
 let constTextAlignment: NSTextAlignment = .center
 let constTextColor: UIColor = UIColor.red
 
+let constMinimumFontSize = 20
+let constMaximumFontSize = 60
+
+let constMinimumFontHeight = 0
+let constMaximumFontHeight = 60
+
+let constMinimumFontSpace = 0
+let constMaximumFontSpace = 10
+
