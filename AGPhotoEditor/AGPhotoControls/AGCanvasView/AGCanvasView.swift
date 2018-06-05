@@ -135,7 +135,7 @@ class AGCanvasView: UIView {
         let panGesture = UIPanGestureRecognizer(target: self,
                                                 action: #selector(AGCanvasView.panGesture))
         panGesture.minimumNumberOfTouches = 1
-        panGesture.maximumNumberOfTouches = 1
+        panGesture.maximumNumberOfTouches = 2
         panGesture.delegate = self
         view.addGestureRecognizer(panGesture)
         
