@@ -94,9 +94,43 @@ extension AGCanvasView : UIGestureRecognizerDelegate {
         }
     }
     
+    @objc func dismissKeyboard(){
+        endEditing(false)
+        canvasViewDelegate?.didFinishEdit()
+    }
+    
     /*
      Support Multiple Gesture at the same time
      */
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        if let view = gestureRecognizer.view {
+            if view == self {
+                if isTyping {
+                    if (touch.view?.isDescendant(of: activeTextView!))! {
+                        return false;
+                    }
+                    return true
+                }
+                else{
+                    return false
+                }
+            }
+//            else if view is UITextView{
+//                if isTyping {
+//                    if (touch.view?.isDescendant(of: activeTextView!))! {
+//                        return false;
+//                    }
+//                    return true
+//                }
+//                else{
+//                    return true
+//                }
+//            }
+//            return true
+        }
+        return true
+    }
     
     public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true

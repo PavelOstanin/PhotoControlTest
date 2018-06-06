@@ -12,28 +12,30 @@ import UIKit
 extension AGCanvasView: UITextViewDelegate {
     
     public func textViewDidChange(_ textView: UITextView) {
-        let oldFrame = textView.bounds
-        let sizeToFit = textView.sizeThatFits(CGSize(width: oldFrame.width, height:CGFloat.greatestFiniteMagnitude))
-        textView.bounds.size = CGSize(width: oldFrame.width, height: sizeToFit.height)
+        let attributes = textView.getCurrentTextAttributes()
+        let newFrame = NSString.init(string: textView.text).boundingRect(with: CGSize.zero, options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: attributes, context: nil)
+        textView.superview?.bounds.size = CGSize(width: newFrame.width + 10.0, height: newFrame.height+30)
+        textView.frame.size = CGSize(width: newFrame.width + 10.0, height: newFrame.height+30)
     }
     
     public func textViewDidBeginEditing(_ textView: UITextView) {
         isTyping = true
-        lastTextViewTransform =  textView.transform
-        lastTextViewTransCenter = textView.center
+        lastTextViewTransform =  textView.superview?.transform
+        lastTextViewTransCenter = textView.superview?.center
         activeTextView = textView
-        textView.superview?.bringSubview(toFront: textView)
+        textView.superview?.superview?.bringSubview(toFront: textView)
         UIView.animate(withDuration: 0.3
             ,
                        animations: {
-                        textView.transform = CGAffineTransform.identity
-                        textView.center = CGPoint(x: self.bounds.width / 2,
+                        textView.superview?.transform = CGAffineTransform.identity
+                        textView.superview?.center = CGPoint(x: self.bounds.width / 2,
                                                   y:  self.bounds.height / 5)
         }, completion: nil)
         
     }
     
     public func textViewDidEndEditing(_ textView: UITextView) {
+        isTyping = false
         guard lastTextViewTransform != nil && lastTextViewTransCenter != nil
             else {
                 return
@@ -41,8 +43,8 @@ extension AGCanvasView: UITextViewDelegate {
         activeTextView = nil
         UIView.animate(withDuration: 0.3,
                        animations: {
-                        textView.transform = self.lastTextViewTransform!
-                        textView.center = self.lastTextViewTransCenter!
+                        textView.superview?.transform = self.lastTextViewTransform!
+                        textView.superview?.center = self.lastTextViewTransCenter!
         }, completion: nil)
     }
 

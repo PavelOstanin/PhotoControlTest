@@ -66,8 +66,17 @@ class AGCanvasView: UIView {
     
     @IBOutlet weak var imageViewForDraw: UIImageView!
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setup()
+    }
+    
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)!
+        setup()
+    }
+    
+    private func setup() {
         Bundle.main.loadNibNamed("AGCanvasView", owner: self, options: nil)
         self.addSubview(contentView)
         self.addSubview(imageViewForDraw)
@@ -78,23 +87,28 @@ class AGCanvasView: UIView {
         contentView.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardDidShow),
                                                name: .UIKeyboardDidShow, object: nil)
+        imageViewForDraw.autoresizingMask = [.flexibleHeight, .flexibleWidth]
+        deleteView.autoresizingMask = [.flexibleLeftMargin, .flexibleTopMargin]
         stack = []
         settings = AGStrokeSettings()
         drawUndoManager = undoManager
         if drawUndoManager == nil {
             drawUndoManager = UndoManager()
         }
-        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(AGCanvasView.dismissKeyboard))
+        tapGesture.delegate = self
+        self.addGestureRecognizer(tapGesture)
     }
     
     func addImage(image: UIImage){
         let imageView = UIImageView(image: image)
         var imageSize = image.size
-        if image.size.height/bounds.size.height > image.size.width/bounds.size.width {
-            imageSize = CGSize.init(width: image.size.width * (bounds.size.height/image.size.height), height: bounds.height)
+        let maxSize = CGSize(width: bounds.size.width / 2, height: bounds.size.height / 2)
+        if image.size.height/maxSize.height > image.size.width/maxSize.width {
+            imageSize = CGSize.init(width: image.size.width * (maxSize.height/image.size.height), height: maxSize.height)
         }
         else {
-            imageSize = CGSize.init(width: bounds.width, height: image.size.height * (bounds.size.width/image.size.width))
+            imageSize = CGSize.init(width: maxSize.width, height: image.size.height * (maxSize.width/image.size.width))
         }
         imageView.contentMode = .scaleAspectFit
         imageView.frame.size = imageSize
@@ -106,10 +120,12 @@ class AGCanvasView: UIView {
     }
     
     func addTextView() {
-        isTyping = true
-        let textView = UITextView(frame: CGRect(x: 0, y: center.y,
+        let mainView = UIView(frame: CGRect(x: 0, y: center.y,
                                                 width: bounds.width, height: 30))
-        textView.center = CGPoint(x: self.bounds.width / 2,
+        mainView.backgroundColor = UIColor.clear
+        let textView = UITextView(frame: CGRect(x: 0, y: 0,
+                                                width: bounds.width, height: 30))
+        mainView.center = CGPoint(x: self.bounds.width / 2,
                                   y:  self.bounds.height / 5)
         textView.textAlignment = .center
         textView.font = UIFont(name: constTextFontName, size: constTextFontSize)
@@ -122,7 +138,9 @@ class AGCanvasView: UIView {
         view.toolBarDelegate = self
         view.textView = textView
         textView.inputAccessoryView = view
-        contentView.addSubview(textView)
+        contentView.addSubview(mainView)
+        mainView.addSubview(textView)
+        
         addGestures(view: textView)
         textView.becomeFirstResponder()
 
@@ -137,19 +155,28 @@ class AGCanvasView: UIView {
         panGesture.minimumNumberOfTouches = 1
         panGesture.maximumNumberOfTouches = 2
         panGesture.delegate = self
-        view.addGestureRecognizer(panGesture)
+        if view is UITextView {
+            view.superview?.addGestureRecognizer(panGesture)
+        }
+        else{
+            view.addGestureRecognizer(panGesture)
+        }
         
-//        if !(view is UITextView){
-            let pinchGesture = UIPinchGestureRecognizer(target: self,
-                                                        action: #selector(AGCanvasView.pinchGesture))
-            pinchGesture.delegate = self
-            view.addGestureRecognizer(pinchGesture)
-//        }
+        let pinchGesture = UIPinchGestureRecognizer(target: self,
+                                                    action: #selector(AGCanvasView.pinchGesture))
+        pinchGesture.delegate = self
+        view.addGestureRecognizer(pinchGesture)
     
         let rotationGestureRecognizer = UIRotationGestureRecognizer(target: self,
                                                                     action:#selector(AGCanvasView.rotationGesture) )
         rotationGestureRecognizer.delegate = self
-        view.addGestureRecognizer(rotationGestureRecognizer)
+        if view is UITextView {
+            view.superview?.addGestureRecognizer(rotationGestureRecognizer)
+        }
+        else{
+            view.addGestureRecognizer(rotationGestureRecognizer)
+        }
+        
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(AGCanvasView.tapGesture))
         view.addGestureRecognizer(tapGesture)
