@@ -23,7 +23,7 @@ extension AGCanvasView: UITextViewDelegate {
         lastTextViewTransform =  textView.superview?.transform
         lastTextViewTransCenter = textView.superview?.center
         activeTextView = textView
-        textView.superview?.superview?.bringSubview(toFront: textView)
+        textView.superview?.superview?.bringSubview(toFront: textView.superview!)
         UIView.animate(withDuration: 0.3
             ,
                        animations: {

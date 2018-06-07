@@ -16,6 +16,10 @@ extension AGCanvasView : UIGestureRecognizerDelegate {
      Selecting transparent parts of the imageview won't move the object
      */
     @objc func panGesture(_ recognizer: UIPanGestureRecognizer) {
+        if (isTyping){
+            dismissKeyboard()
+            return
+        }
         if let view = recognizer.view {
             moveView(view: view, recognizer: recognizer)
         }
@@ -26,6 +30,10 @@ extension AGCanvasView : UIGestureRecognizerDelegate {
      If it's a UITextView will make the font bigger so it doen't look pixlated
      */
     @objc func pinchGesture(_ recognizer: UIPinchGestureRecognizer) {
+        if (isTyping){
+            dismissKeyboard()
+            return
+        }
         if let view = recognizer.view {
             if view is UITextView {
                 let textView = view as! UITextView
@@ -63,6 +71,10 @@ extension AGCanvasView : UIGestureRecognizerDelegate {
      UIRotationGestureRecognizer - Rotating Objects
      */
     @objc func rotationGesture(_ recognizer: UIRotationGestureRecognizer) {
+        if (isTyping){
+            dismissKeyboard()
+            return
+        }
         if let view = recognizer.view {
             view.transform = view.transform.rotated(by: recognizer.rotation)
             recognizer.rotation = 0
@@ -75,6 +87,10 @@ extension AGCanvasView : UIGestureRecognizerDelegate {
      Selecting transparent parts of the imageview won't move the object
      */
     @objc func tapGesture(_ recognizer: UITapGestureRecognizer) {
+        if (isTyping){
+            dismissKeyboard()
+            return
+        }
         for imageView in self.contentView.subviews{
             if imageView is UIImageView {
                 let location = recognizer.location(in: imageView)
@@ -116,18 +132,6 @@ extension AGCanvasView : UIGestureRecognizerDelegate {
                     return false
                 }
             }
-//            else if view is UITextView{
-//                if isTyping {
-//                    if (touch.view?.isDescendant(of: activeTextView!))! {
-//                        return false;
-//                    }
-//                    return true
-//                }
-//                else{
-//                    return true
-//                }
-//            }
-//            return true
         }
         return true
     }
