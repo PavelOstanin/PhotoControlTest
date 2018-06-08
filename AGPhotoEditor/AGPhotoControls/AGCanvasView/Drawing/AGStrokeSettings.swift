@@ -11,7 +11,7 @@ import UIKit
 open class AGStrokeSettings: NSObject {
     
     /// Color of the brush
-    private static let defaultColor = CIColor(color: UIColor.black)
+    private static let defaultColor = CIColor(color: UIColor.red)
     internal var color: CIColor?
     
     /// Width of the brush

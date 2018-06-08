@@ -33,6 +33,7 @@ extension AGPhotoControlsViewController {
     }
     
     @IBAction func drawButtonTapped(_ sender: Any) {
+        canvasView.setBrushColor(red: 1, green: 0, blue: 0)
         canvasView.isDrawing = true
         canvasView.contentView.isUserInteractionEnabled = false
         didChangeEditMode(mode: .draw)
@@ -48,6 +49,14 @@ extension AGPhotoControlsViewController {
     
     @IBAction func clearTapped(_ sender: Any) {
         canvasView.clearDrawing()
+    }
+    
+    @IBAction func drawChangeColorTapped(_ sender: UIButton) {
+        canvasView.settings.color = CIColor.init(red: (sender.tag == 1 ? 1 : 0), green: (sender.tag == 2 ? 1 : 0), blue: (sender.tag == 3 ? 1 : 0), alpha: 1)
+    }
+    
+    @IBAction func drawWidthDidChange(_ sender: UISlider) {
+        canvasView.settings.width = CGFloat(sender.value)
     }
 
     

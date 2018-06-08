@@ -47,6 +47,14 @@
 		E9AFC90820AEFD9A00FF76E2 /* UIImageView+Alpha.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AFC90720AEFD9A00FF76E2 /* UIImageView+Alpha.swift */; };
 		E9AFC90A20AF192800FF76E2 /* AGCanvasView+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AFC90920AF192800FF76E2 /* AGCanvasView+Keyboard.swift */; };
 		E9AFC90C20AF19AE00FF76E2 /* AGCanvasView+UITextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AFC90B20AF19AE00FF76E2 /* AGCanvasView+UITextView.swift */; };
+		E9F8BF0820C01DBB001FDADE /* NumTypes+Conversion.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F8BF0720C01DBB001FDADE /* NumTypes+Conversion.swift */; };
+		E9F8BF0C20C01DCC001FDADE /* fileUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F8BF0920C01DCC001FDADE /* fileUtil.swift */; };
+		E9F8BF0D20C01DCC001FDADE /* debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F8BF0A20C01DCC001FDADE /* debug.swift */; };
+		E9F8BF0E20C01DCC001FDADE /* shaderUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F8BF0B20C01DCC001FDADE /* shaderUtil.swift */; };
+		E9F8BF1120C020D1001FDADE /* point.fsh in Resources */ = {isa = PBXBuildFile; fileRef = E9F8BF0F20C020D1001FDADE /* point.fsh */; };
+		E9F8BF1220C020D1001FDADE /* point.vsh in Resources */ = {isa = PBXBuildFile; fileRef = E9F8BF1020C020D1001FDADE /* point.vsh */; };
+		E9F8BF1420C02547001FDADE /* AGCanvasView+Brush.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F8BF1320C02547001FDADE /* AGCanvasView+Brush.swift */; };
+		E9F8BF1620C03426001FDADE /* Particle.png in Resources */ = {isa = PBXBuildFile; fileRef = E9F8BF1520C03426001FDADE /* Particle.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,6 +100,14 @@
 		E9AFC90720AEFD9A00FF76E2 /* UIImageView+Alpha.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImageView+Alpha.swift"; sourceTree = "<group>"; };
 		E9AFC90920AF192800FF76E2 /* AGCanvasView+Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AGCanvasView+Keyboard.swift"; sourceTree = "<group>"; };
 		E9AFC90B20AF19AE00FF76E2 /* AGCanvasView+UITextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AGCanvasView+UITextView.swift"; sourceTree = "<group>"; };
+		E9F8BF0720C01DBB001FDADE /* NumTypes+Conversion.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NumTypes+Conversion.swift"; sourceTree = "<group>"; };
+		E9F8BF0920C01DCC001FDADE /* fileUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = fileUtil.swift; sourceTree = "<group>"; };
+		E9F8BF0A20C01DCC001FDADE /* debug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = debug.swift; sourceTree = "<group>"; };
+		E9F8BF0B20C01DCC001FDADE /* shaderUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = shaderUtil.swift; sourceTree = "<group>"; };
+		E9F8BF0F20C020D1001FDADE /* point.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = point.fsh; sourceTree = "<group>"; };
+		E9F8BF1020C020D1001FDADE /* point.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = point.vsh; sourceTree = "<group>"; };
+		E9F8BF1320C02547001FDADE /* AGCanvasView+Brush.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AGCanvasView+Brush.swift"; sourceTree = "<group>"; };
+		E9F8BF1520C03426001FDADE /* Particle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Particle.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,7 +192,11 @@
 		E9031A8D20BD4B8E00242A85 /* Drawing */ = {
 			isa = PBXGroup;
 			children = (
+				E9F8BF1520C03426001FDADE /* Particle.png */,
+				E9F8BF0520C01D93001FDADE /* OtherSource */,
+				E9F8BF0620C01D93001FDADE /* Shaders */,
 				E9031A8E20BD4B8E00242A85 /* AGCanvasView+Drawing.swift */,
+				E9F8BF1320C02547001FDADE /* AGCanvasView+Brush.swift */,
 				E9031A9620BD65F200242A85 /* AGStroke.swift */,
 				E9031A9820BD660500242A85 /* AGStrokeSettings.swift */,
 			);
@@ -265,6 +285,26 @@
 			path = AGCustomViews;
 			sourceTree = "<group>";
 		};
+		E9F8BF0520C01D93001FDADE /* OtherSource */ = {
+			isa = PBXGroup;
+			children = (
+				E9F8BF0720C01DBB001FDADE /* NumTypes+Conversion.swift */,
+				E9F8BF0A20C01DCC001FDADE /* debug.swift */,
+				E9F8BF0920C01DCC001FDADE /* fileUtil.swift */,
+				E9F8BF0B20C01DCC001FDADE /* shaderUtil.swift */,
+			);
+			path = OtherSource;
+			sourceTree = "<group>";
+		};
+		E9F8BF0620C01D93001FDADE /* Shaders */ = {
+			isa = PBXGroup;
+			children = (
+				E9F8BF0F20C020D1001FDADE /* point.fsh */,
+				E9F8BF1020C020D1001FDADE /* point.vsh */,
+			);
+			path = Shaders;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -326,6 +366,8 @@
 			files = (
 				E9AFC8F220ADB0C200FF76E2 /* AGImageCollectionViewCell.xib in Resources */,
 				E9031A6920B43A2A00242A85 /* AGToolBar.xib in Resources */,
+				E9F8BF1220C020D1001FDADE /* point.vsh in Resources */,
+				E9F8BF1620C03426001FDADE /* Particle.png in Resources */,
 				E9AFC8D120AD7B8E00FF76E2 /* LaunchScreen.storyboard in Resources */,
 				E9AFC90420AEFC4100FF76E2 /* AGCanvasView.xib in Resources */,
 				E9031A7C20B5418B00242A85 /* AGColorInputView.xib in Resources */,
@@ -336,6 +378,7 @@
 				E9031A8020B5430400242A85 /* AGColorCollectionViewCell.xib in Resources */,
 				E9AFC8CC20AD7B8B00FF76E2 /* Main.storyboard in Resources */,
 				E9031A7220B43C7600242A85 /* AGFontInputView.xib in Resources */,
+				E9F8BF1120C020D1001FDADE /* point.fsh in Resources */,
 				E9031A7720B43D1700242A85 /* AGFontCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -348,11 +391,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9031A8620B5BA3800242A85 /* AGFormatInputView.swift in Sources */,
+				E9F8BF1420C02547001FDADE /* AGCanvasView+Brush.swift in Sources */,
 				E9031A8420B5B3E300242A85 /* UIView+Image.swift in Sources */,
 				E9031A7F20B5430400242A85 /* AGColorCollectionViewCell.swift in Sources */,
+				E9F8BF0C20C01DCC001FDADE /* fileUtil.swift in Sources */,
 				E9AFC90C20AF19AE00FF76E2 /* AGCanvasView+UITextView.swift in Sources */,
 				E9031A8A20B6AD4000242A85 /* AGCanvasView+InputView.swift in Sources */,
 				E9AFC8DB20AD926600FF76E2 /* AGPhotoControlsViewController.swift in Sources */,
+				E9F8BF0820C01DBB001FDADE /* NumTypes+Conversion.swift in Sources */,
 				E9AFC8C920AD7B8B00FF76E2 /* ViewController.swift in Sources */,
 				E9031A7A20B5418000242A85 /* AGColorInputView.swift in Sources */,
 				E9031A6720B43A2A00242A85 /* AGToolBar+Protocol.swift in Sources */,
@@ -370,6 +416,8 @@
 				E9031A8C20B7043F00242A85 /* AGTextView+Attributed.swift in Sources */,
 				E9AFC90A20AF192800FF76E2 /* AGCanvasView+Keyboard.swift in Sources */,
 				E9031A7020B43C6800242A85 /* AGFontInputView.swift in Sources */,
+				E9F8BF0E20C01DCC001FDADE /* shaderUtil.swift in Sources */,
+				E9F8BF0D20C01DCC001FDADE /* debug.swift in Sources */,
 				E9AFC8FA20ADBA4700FF76E2 /* AGPhotoControls+ImagesViewController.swift in Sources */,
 				E9AFC90520AEFC4100FF76E2 /* AGCanvasView.swift in Sources */,
 				E9031A9920BD660500242A85 /* AGStrokeSettings.swift in Sources */,

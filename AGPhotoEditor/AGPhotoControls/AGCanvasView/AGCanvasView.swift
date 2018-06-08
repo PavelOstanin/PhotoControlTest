@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GLKit
 
 // MARK: - Control
 public enum EditMode {
@@ -25,6 +26,42 @@ public protocol AGCanvasViewDelegate {
 }
 
 class AGCanvasView: UIView {
+    
+    var backingWidth: GLint = 0
+    var backingHeight: GLint = 0
+    
+    var context: EAGLContext!
+    
+    // OpenGL names for the renderbuffer and framebuffers used to render to this view
+    var viewRenderbuffer: GLuint = 0, viewFramebuffer: GLuint = 0
+    
+    // OpenGL name for the depth buffer that is attached to viewFramebuffer, if it exists (0 if it does not exist)
+    var depthRenderbuffer: GLuint = 0
+    
+    var brushTexture: textureInfo_t = (0, 0, 0)     // brush texture
+    var brushColor: [GLfloat] = [0, 0, 0, 0]          // brush color
+    
+    var firstTouch: Bool = false
+    var needsErase: Bool = false
+    
+    // Shader objects
+    var vertexShader: GLuint = 0
+    var fragmentShader: GLuint = 0
+    var shaderProgram: GLuint = 0
+    
+    // Buffer Objects
+    var vboId: GLuint = 0
+    
+    var initialized: Bool = false
+    
+    var location: CGPoint = CGPoint()
+    var previousLocation: CGPoint = CGPoint()
+    
+    // Implement this to override the default layer class (which is [CALayer class]).
+    // We do this so that our view will be backed by a layer that is capable of OpenGL ES rendering.
+    override class var layerClass : AnyClass {
+        return CAEAGLLayer.self
+    }
 
     
     
@@ -51,12 +88,6 @@ class AGCanvasView: UIView {
     
     /// Used to register undo and redo actions
     var drawUndoManager: UndoManager!
-    
-    let path = UIBezierPath()
-    let scale = UIScreen.main.scale
-    var pointMoved = false
-    var pointIndex = 0
-    var points = [CGPoint?](repeating: CGPoint.zero, count: 5)
     
     /// Used to keep track of all the strokes
     var stack: [AGStroke]!
@@ -95,9 +126,31 @@ class AGCanvasView: UIView {
         if drawUndoManager == nil {
             drawUndoManager = UndoManager()
         }
+
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(AGCanvasView.dismissKeyboard))
         tapGesture.delegate = self
         self.addGestureRecognizer(tapGesture)
+        
+        let eaglLayer = self.layer as! CAEAGLLayer
+
+        eaglLayer.isOpaque = true
+        // In this application, we want to retain the EAGLDrawable contents after a call to presentRenderbuffer.
+        eaglLayer.drawableProperties = [
+            kEAGLDrawablePropertyRetainedBacking: true,
+            kEAGLDrawablePropertyColorFormat: kEAGLColorFormatRGBA8
+        ]
+
+        context = EAGLContext(api: .openGLES2)
+
+        if context == nil || !EAGLContext.setCurrent(context) {
+            fatalError("EAGLContext cannot be created")
+        }
+        
+        // Set the view's scale factor as you wish
+        self.contentScaleFactor = UIScreen.main.scale
+
+        // Make sure to start with a cleared buffer
+        needsErase = true
     }
     
     func addImage(image: UIImage){

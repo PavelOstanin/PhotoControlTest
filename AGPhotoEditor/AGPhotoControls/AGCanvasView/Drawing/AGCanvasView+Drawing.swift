@@ -28,51 +28,68 @@ import UIKit
     @objc optional func clearDisabled()
 }
 
-
 extension AGCanvasView {
     
-    override public func touchesBegan(_ touches: Set<UITouch>,
-                                      with event: UIEvent?){
+    // Handles the start of a touch
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if !isDrawing{
             return
-        }
-        pointIndex = 0;
-        if let touch = touches.first {
-            let stroke = AGStroke(points: [touch.location(in: self)],
-                                  settings: settings)
-            stack.append(stroke)
-            self.points[0] = touch.location(in: self)
         }
         
+        let bounds = self.bounds
+        let touch = event!.touches(for: self)!.first!
+        firstTouch = true
+        // Convert touch point from UIView referential to OpenGL one (upside-down flip)
+        location = touch.location(in: self)
+        location.y = bounds.size.height - location.y
+        let stroke = AGStroke(points: [location],
+                              settings: settings)
+        stack.append(stroke)
+    }
+    
+    // Handles the continuation of a touch.
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if !isDrawing{
+            return
+        }
         
-    }
-    
-    override public func touchesMoved(_ touches: Set<UITouch>,
-                                      with event: UIEvent?){
-        if !isDrawing{
-            return
-        }
-        if let touch = touches.first {
-            let stroke = stack.last!
-            let lastPoint = stroke.points.last
-            let currentPoint = touch.location(in: self)
-            drawLineWithContext(fromPoint: lastPoint!, toPoint: currentPoint, properties: stroke.settings)
-            stroke.points.append(currentPoint)
-        }
-    }
-    
-    open override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if !isDrawing{
-            return
-        }
+        let bounds = self.bounds
+        let touch = event!.touches(for: self)!.first!
+        
+        // Convert touch point from UIView referential to OpenGL one (upside-down flip)
+        //        if firstTouch {
+        //            firstTouch = false
+        //            previousLocation = touch.previousLocation(in: self)
+        //            previousLocation.y = bounds.size.height - previousLocation.y
+        //        } else {
+        location = touch.location(in: self)
+        location.y = bounds.size.height - location.y
+        previousLocation = touch.previousLocation(in: self)
+        previousLocation.y = bounds.size.height - previousLocation.y
+        //        }
+        
+        // Render the stroke
         let stroke = stack.last!
-        if stroke.points.count == 1 {
-            let lastPoint = stroke.points.last!
-            drawLineWithContext(fromPoint: lastPoint, toPoint: lastPoint, properties: stroke.settings)
-        }
+        stroke.points.append(location)
+        self.renderLine(from: previousLocation, to: location, stroke: stroke)
         
-        self.path.removeAllPoints()
-        self.pointIndex = 0
+    }
+    
+    // Handles the end of a touch event when the touch is a tap.
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if !isDrawing{
+            return
+        }
+        let bounds = self.bounds
+        let touch = event!.touches(for: self)!.first!
+        if firstTouch {
+            firstTouch = false
+            previousLocation = touch.previousLocation(in: self)
+            previousLocation.y = bounds.size.height - previousLocation.y
+            let stroke = stack.last!
+            stroke.points.append(location)
+            self.renderLine(from: previousLocation, to: location, stroke: stroke)
+        }
         
         if !drawUndoManager.canUndo {
             delegate?.undoEnabled?()
@@ -89,8 +106,19 @@ extension AGCanvasView {
         drawUndoManager.registerUndo(withTarget: self, selector: #selector(popDrawing), object: nil)
     }
     
+    // Handles the end of a touch event.
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if !isDrawing{
+            return
+        }
+        // If appropriate, add code necessary to save the state of the application.
+        // This application is not saving state.
+    }
+
+
     /// If possible, it will redo the last undone stroke
     open func redo() {
+//        self.erase()
         if drawUndoManager.canRedo {
             let stackCount = stack.count
             
@@ -110,6 +138,7 @@ extension AGCanvasView {
     
     /// If possible, it will undo the last stroke
     open func undo() {
+        self.erase()
         if drawUndoManager.canUndo {
             let stackCount = stack.count
             
@@ -146,7 +175,10 @@ extension AGCanvasView {
     /// Adds a new stroke to the stack
     @objc internal func pushDrawing(_ stroke: AGStroke) {
         stack.append(stroke)
-        drawStrokeWithContext(stroke)
+        drawStroke(stroke)
+        // Display the buffer
+        glBindRenderbuffer(GL_RENDERBUFFER.ui, viewRenderbuffer)
+        context.presentRenderbuffer(GL_RENDERBUFFER.l)
         drawUndoManager.registerUndo(withTarget: self, selector: #selector(popDrawing), object: nil)
     }
     
@@ -173,6 +205,7 @@ extension AGCanvasView {
         drawUndoManager.registerUndo(withTarget: self, selector: #selector(pushAll(_:)), object: stack)
         stack = []
         redrawStack()
+        self.erase()
     }
 
 
@@ -181,108 +214,74 @@ extension AGCanvasView {
 // MARK: - Drawing
 
 fileprivate extension AGCanvasView {
-    
-    /// Begins the image context
-    func beginImageContext() {
-        UIGraphicsBeginImageContextWithOptions(self.imageViewForDraw.frame.size, false, UIScreen.main.scale)
-    }
-    
-    /// Ends image context and sets UIImage to what was on the context
-    func endImageContext() {
-        imageViewForDraw.image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-    }
-    
-    /// Draws the current image for context
-    func drawCurrentImage() {
-        imageViewForDraw.image?.draw(in: imageViewForDraw.bounds)
-    }
+
     
     /// Clears view, then draws stack
     func redrawStack() {
-        beginImageContext()
         for stroke in stack {
             drawStroke(stroke)
         }
-        endImageContext()
+        // Display the buffer
+        glBindRenderbuffer(GL_RENDERBUFFER.ui, viewRenderbuffer)
+        context.presentRenderbuffer(GL_RENDERBUFFER.l)
     }
     
     /// Draws a single Stroke
     func drawStroke(_ stroke: AGStroke) {
         let properties = stroke.settings
-        let points = stroke.points
-        
-        if points.count == 1 {
-            let point = points[0]
-            drawLine(fromPoint: point, toPoint: point, properties: properties)
+        glUniform1f(program[PROGRAM_POINT].uniform[UNIFORM_POINT_SIZE], GLfloat(properties.width))
+        setBrushColor(red: (properties.color?.red)!, green: (properties.color?.green)!, blue: (properties.color?.blue)!)
+        var points = stroke.points
+        if  points.count == 1{
+            points.append(points.first!)
         }
-        
+        struct Static {
+            static var vertexBuffer: [GLfloat] = []
+        }
+        var count = 0
+        var totalCount = 0
+        var tempArray : [CGFloat] = []
+        EAGLContext.setCurrent(context)
+        glBindFramebuffer(GL_FRAMEBUFFER.ui, viewFramebuffer)
         for i in stride(from: 1, to: points.count, by: 1) {
             let point0 = points[i - 1]
             let point1 = points[i]
-            drawLine(fromPoint: point0, toPoint: point1, properties: properties)
+            
+            // Convert locations from Points to Pixels
+            let scale = self.contentScaleFactor
+            var start = point0
+            start.x *= scale
+            start.y *= scale
+            var end = point1
+            end.x *= scale
+            end.y *= scale
+            
+            // Add points to the buffer so there are drawing points every X pixels
+            count = max(Int(ceilf(sqrtf((end.x - start.x).f * (end.x - start.x).f + (end.y - start.y).f * (end.y - start.y).f) / kBrushPixelStep.f)), 1)
+            totalCount = totalCount + count
+            for i in 0..<count {
+                tempArray.append(CGFloat(start.x.f + (end.x - start.x).f * (i.f / count.f)))
+                tempArray.append(CGFloat(start.y.f + (end.y - start.y).f * (i.f / count.f)))
+            }
         }
-    }
-    
-    /// Draws a single Stroke (begins/ends context
-    func drawStrokeWithContext(_ stroke: AGStroke) {
-        beginImageContext()
-        drawCurrentImage()
-        drawStroke(stroke)
-        endImageContext()
-    }
-    
-    /// Draws a line between two points
-    func drawLine(fromPoint: CGPoint, toPoint: CGPoint, properties: AGStrokeSettings) {
-        let context = UIGraphicsGetCurrentContext()
-        
-//        self.pointIndex+=1
-//        self.points[self.pointIndex] = toPoint
-//        if self.pointIndex == 4 {
-//            // move the endpoint to the middle of the line joining the second control point of the first Bezier segment
-//            // and the first control point of the second Bezier segment
-//            self.points[3] = CGPoint(x: (self.points[2]!.x + self.points[4]!.x)/2.0, y: (self.points[2]!.y + self.points[4]!.y) / 2.0)
-//
-//            // add a cubic Bezier from pt[0] to pt[3], with control points pt[1] and pt[2]
-//            context!.move(to: self.points[0]!)
-//            context!.addCurve(to: self.points[3]!, control1: self.points[1]!, control2: self.points[2]!)
-//
-//            // replace points and get ready to handle the next segment
-//            self.points[0] = self.points[3]
-//            self.points[1] = self.points[4]
-//            self.pointIndex = 1
-//        }
-//        else{
-            context!.move(to: CGPoint(x: fromPoint.x, y: fromPoint.y))
-            context!.addLine(to: CGPoint(x: toPoint.x, y: toPoint.y))
-//        }
-        
-        
-        
-        
-        context!.setLineCap(CGLineCap.round)
-        context!.setLineWidth(properties.width)
-        let color = properties.color
-        if color != nil {
-            context!.setStrokeColor(red: properties.color!.red,
-                                    green: properties.color!.green,
-                                    blue: properties.color!.blue,
-                                    alpha: properties.color!.alpha)
-            context!.setBlendMode(CGBlendMode.normal)
-        } else {
-            context!.setBlendMode(CGBlendMode.clear)
+        // Allocate vertex array buffer
+        Static.vertexBuffer.reserveCapacity(totalCount * 2)
+        Static.vertexBuffer.removeAll(keepingCapacity: true)
+        for f in tempArray{
+            Static.vertexBuffer.append(GLfloat(f))
         }
+        glBindBuffer(GL_ARRAY_BUFFER.ui, vboId)
+        glBufferData(GL_ARRAY_BUFFER.ui, totalCount*2*MemoryLayout<GLfloat>.size, Static.vertexBuffer, GL_DYNAMIC_DRAW.ui)
         
-        context!.strokePath()
+        glEnableVertexAttribArray(ATTRIB_VERTEX.ui)
+        glVertexAttribPointer(ATTRIB_VERTEX.ui, 2, GL_FLOAT.ui, GL_FALSE.ub, 0, nil)
+        
+        // Draw
+        glUseProgram(program[PROGRAM_POINT].id)
+        glDrawArrays(GL_POINTS.ui, 0, totalCount.i)
+        
         
         
     }
     
-    /// Draws a line between two points (begins/ends context)
-    func drawLineWithContext(fromPoint: CGPoint, toPoint: CGPoint, properties: AGStrokeSettings) {
-        beginImageContext()
-        drawCurrentImage()
-        drawLine(fromPoint: fromPoint, toPoint: toPoint, properties: properties)
-        endImageContext()
-    }
 }
