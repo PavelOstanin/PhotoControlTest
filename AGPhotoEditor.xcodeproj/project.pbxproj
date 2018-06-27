@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		337644DCCC40E6A7676E3CA4 /* Pods_AGPhotoEditor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3CE63448E57F04A4903E8D85 /* Pods_AGPhotoEditor.framework */; };
 		E9031A6720B43A2A00242A85 /* AGToolBar+Protocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9031A6420B43A2A00242A85 /* AGToolBar+Protocol.swift */; };
 		E9031A6820B43A2A00242A85 /* AGToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9031A6520B43A2A00242A85 /* AGToolBar.swift */; };
 		E9031A6920B43A2A00242A85 /* AGToolBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9031A6620B43A2A00242A85 /* AGToolBar.xib */; };
@@ -27,6 +28,7 @@
 		E9031A8F20BD4B8E00242A85 /* AGCanvasView+Drawing.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9031A8E20BD4B8E00242A85 /* AGCanvasView+Drawing.swift */; };
 		E9031A9720BD65F200242A85 /* AGStroke.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9031A9620BD65F200242A85 /* AGStroke.swift */; };
 		E9031A9920BD660500242A85 /* AGStrokeSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9031A9820BD660500242A85 /* AGStrokeSettings.swift */; };
+		E92FEEF920E3D3EA0037537D /* Particle.png in Resources */ = {isa = PBXBuildFile; fileRef = E92FEEF820E3D3E90037537D /* Particle.png */; };
 		E9AFC8C720AD7B8B00FF76E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AFC8C620AD7B8B00FF76E2 /* AppDelegate.swift */; };
 		E9AFC8C920AD7B8B00FF76E2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AFC8C820AD7B8B00FF76E2 /* ViewController.swift */; };
 		E9AFC8CC20AD7B8B00FF76E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9AFC8CA20AD7B8B00FF76E2 /* Main.storyboard */; };
@@ -54,10 +56,13 @@
 		E9F8BF1120C020D1001FDADE /* point.fsh in Resources */ = {isa = PBXBuildFile; fileRef = E9F8BF0F20C020D1001FDADE /* point.fsh */; };
 		E9F8BF1220C020D1001FDADE /* point.vsh in Resources */ = {isa = PBXBuildFile; fileRef = E9F8BF1020C020D1001FDADE /* point.vsh */; };
 		E9F8BF1420C02547001FDADE /* AGCanvasView+Brush.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9F8BF1320C02547001FDADE /* AGCanvasView+Brush.swift */; };
-		E9F8BF1620C03426001FDADE /* Particle.png in Resources */ = {isa = PBXBuildFile; fileRef = E9F8BF1520C03426001FDADE /* Particle.png */; };
+		E9FEAB2C20D939EA006BBC5F /* AGFontManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9FEAB2B20D939EA006BBC5F /* AGFontManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3CE63448E57F04A4903E8D85 /* Pods_AGPhotoEditor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AGPhotoEditor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		94D96CFC0D96F824796C8EAE /* Pods-AGPhotoEditor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AGPhotoEditor.release.xcconfig"; path = "Pods/Target Support Files/Pods-AGPhotoEditor/Pods-AGPhotoEditor.release.xcconfig"; sourceTree = "<group>"; };
+		D3D8A0A16A0C370E6301AA9B /* Pods-AGPhotoEditor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AGPhotoEditor.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AGPhotoEditor/Pods-AGPhotoEditor.debug.xcconfig"; sourceTree = "<group>"; };
 		E9031A6420B43A2A00242A85 /* AGToolBar+Protocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AGToolBar+Protocol.swift"; sourceTree = "<group>"; };
 		E9031A6520B43A2A00242A85 /* AGToolBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AGToolBar.swift; sourceTree = "<group>"; };
 		E9031A6620B43A2A00242A85 /* AGToolBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AGToolBar.xib; sourceTree = "<group>"; };
@@ -78,6 +83,7 @@
 		E9031A8E20BD4B8E00242A85 /* AGCanvasView+Drawing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AGCanvasView+Drawing.swift"; sourceTree = "<group>"; };
 		E9031A9620BD65F200242A85 /* AGStroke.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AGStroke.swift; sourceTree = "<group>"; };
 		E9031A9820BD660500242A85 /* AGStrokeSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AGStrokeSettings.swift; sourceTree = "<group>"; };
+		E92FEEF820E3D3E90037537D /* Particle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Particle.png; sourceTree = "<group>"; };
 		E9AFC8C320AD7B8B00FF76E2 /* AGPhotoEditor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AGPhotoEditor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9AFC8C620AD7B8B00FF76E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E9AFC8C820AD7B8B00FF76E2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -107,7 +113,7 @@
 		E9F8BF0F20C020D1001FDADE /* point.fsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = point.fsh; sourceTree = "<group>"; };
 		E9F8BF1020C020D1001FDADE /* point.vsh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.glsl; path = point.vsh; sourceTree = "<group>"; };
 		E9F8BF1320C02547001FDADE /* AGCanvasView+Brush.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AGCanvasView+Brush.swift"; sourceTree = "<group>"; };
-		E9F8BF1520C03426001FDADE /* Particle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Particle.png; sourceTree = "<group>"; };
+		E9FEAB2B20D939EA006BBC5F /* AGFontManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AGFontManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,12 +121,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				337644DCCC40E6A7676E3CA4 /* Pods_AGPhotoEditor.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4D789460EA28AAF6B910108E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D3D8A0A16A0C370E6301AA9B /* Pods-AGPhotoEditor.debug.xcconfig */,
+				94D96CFC0D96F824796C8EAE /* Pods-AGPhotoEditor.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		6A79AD4CC9B4586D11A427A5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3CE63448E57F04A4903E8D85 /* Pods_AGPhotoEditor.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E9031A6220B43A2A00242A85 /* AGInputViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -192,7 +216,7 @@
 		E9031A8D20BD4B8E00242A85 /* Drawing */ = {
 			isa = PBXGroup;
 			children = (
-				E9F8BF1520C03426001FDADE /* Particle.png */,
+				E92FEEF820E3D3E90037537D /* Particle.png */,
 				E9F8BF0520C01D93001FDADE /* OtherSource */,
 				E9F8BF0620C01D93001FDADE /* Shaders */,
 				E9031A8E20BD4B8E00242A85 /* AGCanvasView+Drawing.swift */,
@@ -208,6 +232,8 @@
 			children = (
 				E9AFC8C520AD7B8B00FF76E2 /* AGPhotoEditor */,
 				E9AFC8C420AD7B8B00FF76E2 /* Products */,
+				4D789460EA28AAF6B910108E /* Pods */,
+				6A79AD4CC9B4586D11A427A5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -229,6 +255,7 @@
 				E9AFC8CD20AD7B8E00FF76E2 /* Assets.xcassets */,
 				E9AFC8CF20AD7B8E00FF76E2 /* LaunchScreen.storyboard */,
 				E9AFC8D220AD7B8E00FF76E2 /* Info.plist */,
+				E9FEAB2B20D939EA006BBC5F /* AGFontManager.swift */,
 			);
 			path = AGPhotoEditor;
 			sourceTree = "<group>";
@@ -312,9 +339,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E9AFC8D520AD7B8E00FF76E2 /* Build configuration list for PBXNativeTarget "AGPhotoEditor" */;
 			buildPhases = (
+				B5447BDECA47E8044871F53A /* [CP] Check Pods Manifest.lock */,
 				E9AFC8BF20AD7B8B00FF76E2 /* Sources */,
 				E9AFC8C020AD7B8B00FF76E2 /* Frameworks */,
 				E9AFC8C120AD7B8B00FF76E2 /* Resources */,
+				580BC1CE0D1A1CA54A41A3C1 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -367,7 +396,7 @@
 				E9AFC8F220ADB0C200FF76E2 /* AGImageCollectionViewCell.xib in Resources */,
 				E9031A6920B43A2A00242A85 /* AGToolBar.xib in Resources */,
 				E9F8BF1220C020D1001FDADE /* point.vsh in Resources */,
-				E9F8BF1620C03426001FDADE /* Particle.png in Resources */,
+				E92FEEF920E3D3EA0037537D /* Particle.png in Resources */,
 				E9AFC8D120AD7B8E00FF76E2 /* LaunchScreen.storyboard in Resources */,
 				E9AFC90420AEFC4100FF76E2 /* AGCanvasView.xib in Resources */,
 				E9031A7C20B5418B00242A85 /* AGColorInputView.xib in Resources */,
@@ -385,6 +414,45 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		580BC1CE0D1A1CA54A41A3C1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-AGPhotoEditor/Pods-AGPhotoEditor-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-AGPhotoEditor/Pods-AGPhotoEditor-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B5447BDECA47E8044871F53A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AGPhotoEditor-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		E9AFC8BF20AD7B8B00FF76E2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -393,6 +461,7 @@
 				E9031A8620B5BA3800242A85 /* AGFormatInputView.swift in Sources */,
 				E9F8BF1420C02547001FDADE /* AGCanvasView+Brush.swift in Sources */,
 				E9031A8420B5B3E300242A85 /* UIView+Image.swift in Sources */,
+				E9FEAB2C20D939EA006BBC5F /* AGFontManager.swift in Sources */,
 				E9031A7F20B5430400242A85 /* AGColorCollectionViewCell.swift in Sources */,
 				E9F8BF0C20C01DCC001FDADE /* fileUtil.swift in Sources */,
 				E9AFC90C20AF19AE00FF76E2 /* AGCanvasView+UITextView.swift in Sources */,
@@ -563,6 +632,7 @@
 		};
 		E9AFC8D620AD7B8E00FF76E2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D3D8A0A16A0C370E6301AA9B /* Pods-AGPhotoEditor.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -581,6 +651,7 @@
 		};
 		E9AFC8D720AD7B8E00FF76E2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 94D96CFC0D96F824796C8EAE /* Pods-AGPhotoEditor.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

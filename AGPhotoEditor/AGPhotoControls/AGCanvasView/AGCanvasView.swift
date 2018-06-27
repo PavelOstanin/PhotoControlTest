@@ -232,6 +232,7 @@ class AGCanvasView: UIView {
         
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(AGCanvasView.tapGesture))
+//        tapGesture.delegate = self
         view.addGestureRecognizer(tapGesture)
         
     }

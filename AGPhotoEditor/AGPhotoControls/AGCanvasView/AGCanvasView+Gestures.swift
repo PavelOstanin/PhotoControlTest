@@ -87,23 +87,19 @@ extension AGCanvasView : UIGestureRecognizerDelegate {
      Selecting transparent parts of the imageview won't move the object
      */
     @objc func tapGesture(_ recognizer: UITapGestureRecognizer) {
-        if (isTyping){
-            dismissKeyboard()
-            return
-        }
-        for imageView in self.contentView.subviews{
-            if imageView is UIImageView {
-                let location = recognizer.location(in: imageView)
-                let alpha = (imageView as! UIImageView).alphaAtPoint(location)
+        for view in self.contentView.subviews{
+            if view is UIImageView {
+                let location = recognizer.location(in: view)
+                let alpha = (view as! UIImageView).alphaAtPoint(location)
                 if alpha > 0 {
-                    scaleEffect(view: imageView)
+                    scaleEffect(view: view)
                     break
                 }
             }
             else{
-                let location = recognizer.location(in: imageView.superview)
-                if imageView.frame.contains(location){
-                    scaleEffect(view: imageView)
+                let location = recognizer.location(in: view.superview)
+                if view.frame.contains(location){
+                    scaleEffect(view: view)
                     break
                 }
             }
@@ -132,6 +128,9 @@ extension AGCanvasView : UIGestureRecognizerDelegate {
                     return false
                 }
             }
+        }
+        if isTyping && (touch.view?.isDescendant(of: activeTextView!))!{
+            return false
         }
         return true
     }
@@ -231,16 +230,6 @@ extension AGCanvasView : UIGestureRecognizerDelegate {
 
             }
         }
-    }
-    
-    func subImageViews(view: UIView) -> [UIImageView] {
-        var imageviews: [UIImageView] = []
-        for imageView in view.subviews {
-            if imageView is UIImageView {
-                imageviews.append(imageView as! UIImageView)
-            }
-        }
-        return imageviews
     }
     
 }

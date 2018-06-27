@@ -12,6 +12,8 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+//        AGFontManager.uploadFont(url: "http://dev.agilie.com/Spirax-Regular.ttf")
+        AGFontManager.registerCurrentFonts()
     }
 
     @IBAction func startPhotoEditorDidTouch(_ sender: Any) {

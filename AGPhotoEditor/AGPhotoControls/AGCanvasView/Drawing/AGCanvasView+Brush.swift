@@ -12,7 +12,7 @@ import GLKit
 //CONSTANTS:
 
 let kBrushOpacity = (1.0 / 3.0)
-let kBrushPixelStep = 3
+let kBrushPixelStep = 15
 let kBrushScale = 2
 
 // Shaders

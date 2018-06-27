@@ -35,7 +35,8 @@ let fontsDataSource = ["Helvetica",
              "DevanagariSangamMN",
              "HoeflerText-Regular",
              "MyanmarSangamMN",
-             "PingFangHK-Regular"]
+             "PingFangHK-Regular",
+             "Spirax-Regular"]
 
 let constTextLineSpacing: CGFloat = 0
 let constTextKern: CGFloat = 0
